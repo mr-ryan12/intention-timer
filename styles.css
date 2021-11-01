@@ -1,0 +1,35 @@
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
+header {
+  background-color: #46424D;
+  color: #FFF;
+  max-width: 100%;
+  margin: 0px;
+  display: flex;
+  justify-content: space-around;
+  height: 50px
+}
+
+body {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+
+
+
+
+
+
+/* Main background: #2B2733
+Text on main background: #CBC9CF
+Header, cards: #46424D
+Card shadow: #26222D
+Text on header and cards: #FFF
+Study: #B3FD78
+Meditate: #C278FD
+Exercise: #FD8078
+Error: #EFB7EC
