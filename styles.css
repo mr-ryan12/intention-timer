@@ -101,6 +101,21 @@ main {
   border-radius: 5px 5px;
 }
 
+.study-button-active {
+  background: url("assets/study-active.svg");
+  color: #B3FD78;
+  background-repeat: no-repeat;
+  background-size: 25px 25px;
+  background-position: 58px 10px;
+  height: 67px;
+  width: 142px;
+  border: 1px solid #B3FD78;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 27px;
+  border-radius: 5px 5px;
+}
+
 
 .meditate-button {
   background: url("assets/meditate.svg");
@@ -111,6 +126,21 @@ main {
   height: 67px;
   width: 142px;
   border: 1px solid #FFF;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 27px;
+  border-radius: 5px 5px;
+}
+
+.meditate-button-active {
+  background: url("assets/meditate-active.svg");
+  color: #C278FD;
+  background-repeat: no-repeat;
+  background-size: 25px 25px;
+  background-position: 58px 10px;
+  height: 67px;
+  width: 142px;
+  border: 1px solid #C278FD;
   padding-left: 10px;
   padding-right: 10px;
   padding-top: 27px;
@@ -132,11 +162,27 @@ main {
   border-radius: 5px 5px;
 }
 
+.exercise-button-active {
+  background: url("assets/exercise-active.svg");
+  color: #FD8078;
+  background-repeat: no-repeat;
+  background-size: 25px 25px;
+  background-position: 58px 10px;
+  height: 67px;
+  width: 142px;
+  border: 1px solid #FD8078;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 27px;
+  border-radius: 5px 5px;
+}
+
 .error-message {
   position: relative;
-top: -80px;
-right: -34px;
-font-size: 12px;
+  color: #EFB7EC;
+  top: -80px;
+  right: -34px;
+  font-size: 12px;
 }
 
 .warning-label {
