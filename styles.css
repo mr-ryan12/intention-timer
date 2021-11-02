@@ -40,6 +40,28 @@ main {
   justify-content: space-around;
   padding: 2px 65px;
 }
+
+.timer-sub-container{
+  background-color: #46424D;
+  color: #FFF;
+  height: 75vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 2px 65px;
+  align-items: center;
+}
+
+.start-timer {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  border: 3px solid red;
+  background-color: inherit;
+  color: #FFF;
+  font-size: 20px;
+}
+
 .select-a-category {
   padding: 2px 2px;
   position: relative;
@@ -168,6 +190,9 @@ input[type=text] {
   height: 26px;
 }
 
+.hidden {
+  display: none;
+}
 
 /* Main background: #2B2733
 Text on main background: #CBC9CF
