@@ -40,6 +40,17 @@ main {
   justify-content: space-around;
   padding: 2px 65px;
 }
+
+.timer-sub-container{
+    background-color: #46424D;
+    color: #FFF;
+    height: 75vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 2px 65px;
+}
+
 .select-a-category {
   padding: 2px 2px;
   position: relative;
@@ -168,6 +179,9 @@ input[type=text] {
   height: 26px;
 }
 
+.hidden {
+  display: none;
+}
 
 /* Main background: #2B2733
 Text on main background: #CBC9CF
