@@ -115,26 +115,53 @@ main {
   position: relative;
   bottom: 76px;
   right: -35px;
-  padding: 2px 37%;
+  padding: 2px 35%;
 }
 
-.time {
+.minutes-time {
   position: relative;
   bottom: 52px;
   right: -35px;
 }
 
-.minutes-input,
+.seconds-time{
+  position: relative;
+  bottom: 52px;
+  right: -41px;
+}
+
+/* .minutes-input,
 .seconds-input {
   position: relative;
   bottom: 15px;
   right: 35px;
+} */
+
+.seconds-input {
+  position: relative;
+  right: 31px;
+  padding: 2px 9.5%;
+}
+
+.minutes-input {
+  position: relative;
+  right: 34px;
+  padding: 2px 9.5%;
 }
 
 input[type=text] {
   background: transparent;
   border: none;
   border-bottom: 1px solid #FFF;
+}
+
+.start-button {
+  float: right;
+  position: relative;
+  bottom: -32px;
+  right: 30px;
+  width: 176px;
+  height: 26px;
 }
 
 
