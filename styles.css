@@ -35,11 +35,29 @@ main {
   background-color: #46424D;
   color: #FFF;
   height: 75vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 2px 65px;
+}
+.select-a-category {
+  padding: 2px 2px;
+  position: relative;
+  bottom: 31px;
+  right: -36px;
 }
 
 .right-container {
   width: 50%;
   border-left: 3px solid #46424D;
+}
+
+.left-buttons {
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+  bottom: 98px;
+  right: 6px;
 }
 
 .study-button {
@@ -85,6 +103,38 @@ main {
   padding-right: 10px;
   padding-top: 27px;
   border-radius: 5px 5px;
+}
+
+.accomplish {
+  position: relative;
+  bottom: 111px;
+  right: -35px;
+}
+
+.accomplish-input {
+  position: relative;
+  bottom: 76px;
+  right: -35px;
+  padding: 2px 37%;
+}
+
+.time {
+  position: relative;
+  bottom: 52px;
+  right: -35px;
+}
+
+.minutes-input,
+.seconds-input {
+  position: relative;
+  bottom: 15px;
+  right: 35px;
+}
+
+input[type=text] {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #FFF;
 }
 
 
