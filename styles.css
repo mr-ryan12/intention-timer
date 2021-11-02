@@ -52,6 +52,10 @@ main {
   border-left: 3px solid #46424D;
 }
 
+.right-container > p {
+  text-align: center;
+}
+
 .left-buttons {
   display: flex;
   justify-content: space-around;
