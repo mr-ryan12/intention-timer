@@ -21,31 +21,148 @@ body {
 
 main {
   display: flex;
-  overflow: hidden;
-  /* width: 100vw; */
 }
 
 .container {
   background-color: #2B2733;
   color: #CBC9CF;
-  height: 100vh;
+  height: 85.55vh;
+  width: 90vw;
   padding: 30px;
 }
 
 .left-sub-container {
   background-color: #46424D;
   color: #FFF;
-  height: 90vh;
+  height: 75vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 2px 65px;
 }
-
-.left-container {
+.select-a-category {
+  padding: 2px 2px;
+  position: relative;
+  bottom: 31px;
+  right: -36px;
 }
 
 .right-container {
+  width: 50%;
+  border-left: 3px solid #46424D;
 }
 
+.left-buttons {
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+  bottom: 98px;
+  right: 6px;
+}
 
+.study-button {
+  background: url("assets/study.svg");
+  color: #FFF;
+  background-repeat: no-repeat;
+  background-size: 25px 25px;
+  background-position: 60px 2px;
+  height: 50px;
+  width: 150px;
+  border: 1px solid #FFF;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 27px;
+  border-radius: 5px 5px;
+}
 
+.meditate-button {
+  background: url("assets/meditate.svg");
+  color: #FFF;
+  background-repeat: no-repeat;
+  background-size: 25px 25px;
+  background-position: 60px 2px;
+  height: 50px;
+  width: 150px;
+  border: 1px solid #FFF;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 27px;
+  border-radius: 5px 5px;
+}
+
+.exercise-button {
+  background: url("assets/exercise.svg");
+  color: #FFF;
+  background-repeat: no-repeat;
+  background-size: 25px 25px;
+  background-position: 60px 2px;
+  height: 50px;
+  width: 150px;
+  border: 1px solid #FFF;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 27px;
+  border-radius: 5px 5px;
+}
+
+.accomplish {
+  position: relative;
+  bottom: 111px;
+  right: -35px;
+}
+
+.accomplish-input {
+  position: relative;
+  bottom: 76px;
+  right: -35px;
+  padding: 2px 35%;
+}
+
+.minutes-time {
+  position: relative;
+  bottom: 52px;
+  right: -35px;
+}
+
+.seconds-time{
+  position: relative;
+  bottom: 52px;
+  right: -41px;
+}
+
+/* .minutes-input,
+.seconds-input {
+  position: relative;
+  bottom: 15px;
+  right: 35px;
+} */
+
+.seconds-input {
+  position: relative;
+  right: 31px;
+  padding: 2px 9.5%;
+}
+
+.minutes-input {
+  position: relative;
+  right: 34px;
+  padding: 2px 9.5%;
+}
+
+input[type=text] {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #FFF;
+}
+
+.start-button {
+  float: right;
+  position: relative;
+  bottom: -32px;
+  right: 30px;
+  width: 176px;
+  height: 26px;
+}
 
 
 /* Main background: #2B2733
