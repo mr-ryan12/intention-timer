@@ -42,13 +42,24 @@ main {
 }
 
 .timer-sub-container{
-    background-color: #46424D;
-    color: #FFF;
-    height: 75vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    padding: 2px 65px;
+  background-color: #46424D;
+  color: #FFF;
+  height: 75vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 2px 65px;
+  align-items: center;
+}
+
+.start-timer {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  border: 3px solid red;
+  background-color: inherit;
+  color: #FFF;
+  font-size: 20px;
 }
 
 .select-a-category {
