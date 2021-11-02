@@ -65,7 +65,7 @@ main {
 .select-a-category {
   padding: 2px 2px;
   position: relative;
-  bottom: 31px;
+  bottom: 8px;
   right: -36px;
 }
 
@@ -91,9 +91,9 @@ main {
   color: #FFF;
   background-repeat: no-repeat;
   background-size: 25px 25px;
-  background-position: 60px 2px;
-  height: 50px;
-  width: 150px;
+  background-position: 58px 10px;
+  height: 67px;
+  width: 142px;
   border: 1px solid #FFF;
   padding-left: 10px;
   padding-right: 10px;
@@ -101,14 +101,15 @@ main {
   border-radius: 5px 5px;
 }
 
+
 .meditate-button {
   background: url("assets/meditate.svg");
   color: #FFF;
   background-repeat: no-repeat;
   background-size: 25px 25px;
-  background-position: 60px 2px;
-  height: 50px;
-  width: 150px;
+  background-position: 58px 10px;
+  height: 67px;
+  width: 142px;
   border: 1px solid #FFF;
   padding-left: 10px;
   padding-right: 10px;
@@ -121,9 +122,9 @@ main {
   color: #FFF;
   background-repeat: no-repeat;
   background-size: 25px 25px;
-  background-position: 60px 2px;
-  height: 50px;
-  width: 150px;
+  background-position: 58px 10px;
+  height: 67px;
+  width: 142px;
   border: 1px solid #FFF;
   padding-left: 10px;
   padding-right: 10px;
@@ -131,6 +132,17 @@ main {
   border-radius: 5px 5px;
 }
 
+.error-message {
+  position: relative;
+top: -80px;
+right: -34px;
+font-size: 12px;
+}
+
+.warning-label {
+  height: 15px;
+  width: 25px;
+}
 .accomplish {
   position: relative;
   bottom: 111px;

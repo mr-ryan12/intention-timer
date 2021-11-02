@@ -13,12 +13,12 @@
   <main>
     <section class="container left-container">
       <h1 class="new-activity">New Activity</h1>
-      <section class="view timer-sub-container">
+      <section class="view timer-sub-container hidden">
         <h1 class="activity-input">empty string</h1>
         <!-- stand in for timer -->
         <button class="start-timer">START</button>
       </section>
-      <section class="view left-sub-container hidden">
+      <section class="view left-sub-container">
         <h3 class="select-a-category">Select a category:</h3>
         <section class="left-buttons">
           <button class="study-button">Study</button>
@@ -28,6 +28,7 @@
         <form class="left-inputs">
           <label class="accomplish" for="accomplish-input">What would you like to accomplish during this time?</label>
           <input class="accomplish-input" type="text" id="accomplish-input" />
+          <h3 class="error-message hidden"><img class="warning-label" src="./assets/warning.svg"/> A description is required.</h3>
           <br />
           <label class="minutes-time" for="minutes-input">Minutes</label>
           <input class="minutes-input" type="text" id="minutes-input" />
