@@ -42,6 +42,50 @@ main {
   border-left: 3px solid #46424D;
 }
 
+.study-button {
+  background: url("assets/study.svg");
+  color: #FFF;
+  background-repeat: no-repeat;
+  background-size: 25px 25px;
+  background-position: 60px 2px;
+  height: 50px;
+  width: 150px;
+  border: 1px solid #FFF;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 27px;
+  border-radius: 5px 5px;
+}
+
+.meditate-button {
+  background: url("assets/meditate.svg");
+  color: #FFF;
+  background-repeat: no-repeat;
+  background-size: 25px 25px;
+  background-position: 60px 2px;
+  height: 50px;
+  width: 150px;
+  border: 1px solid #FFF;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 27px;
+  border-radius: 5px 5px;
+}
+
+.exercise-button {
+  background: url("assets/exercise.svg");
+  color: #FFF;
+  background-repeat: no-repeat;
+  background-size: 25px 25px;
+  background-position: 60px 2px;
+  height: 50px;
+  width: 150px;
+  border: 1px solid #FFF;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 27px;
+  border-radius: 5px 5px;
+}
 
 
 /* Main background: #2B2733
