@@ -9,9 +9,27 @@ var accomplishInput = document.querySelector('.accomplish-input');
 var minutesInput = document.querySelector('.minutes-input');
 var secondsInput = document.querySelector('.second-input');
 
-studyButton.addEventListener('click', addStudyButtonColor);
-meditateButton.addEventListener('click', addMeditateButtonColor);
-exerciseButton.addEventListener('click', addExerciseButtonColor);
+studyButton.addEventListener('click', toggleStudyButtonColor);
+meditateButton.addEventListener('click', toggleMeditateButtonColor);
+exerciseButton.addEventListener('click', toggleExerciseButtonColor);
+
+function toggleStudyButtonColor() {
+  addStudyButtonColor();
+  removeMeditateButtonColor();
+  removeExerciseButtonColor();
+}
+
+function toggleMeditateButtonColor() {
+  addMeditateButtonColor();
+  removeStudyButtonColor();
+  removeExerciseButtonColor();
+}
+
+function toggleExerciseButtonColor() {
+  addExerciseButtonColor();
+  removeStudyButtonColor();
+  removeMeditateButtonColor();
+}
 
 function addStudyButtonColor() {
   studyButton.classList.add('study-button-active');
