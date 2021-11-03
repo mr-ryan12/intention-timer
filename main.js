@@ -9,6 +9,8 @@ var errorMessage = document.querySelector('.error-message');
 var accomplishInput = document.querySelector('.accomplish-input');
 var minutesInput = document.querySelector('.minutes-input');
 var secondsInput = document.querySelector('.seconds-input');
+var timerView = document.querySelector('.timer-sub-container')
+var leftSubContainer = document.querySelector('.left-sub-container')
 
 window.addEventListener('load', preventMinutesE);
 window.addEventListener('load', preventSecondsE);
@@ -65,19 +67,39 @@ function displayErrorMessage() {
 
 function checkForInputs(event) {
   event.preventDefault();
+  if ((minutesInput.value === '') || (secondsInput.value === '') || (accomplishInput.value === '')) {
+    minutesError();
+    secondsError(); 
+    accomplishError();
+  } else {
+    toggleTimerView();
+  }
+}
+
+function minutesError() {
   if (minutesInput.value === '') {
-    displayErrorMessage();
-    minutesInput.classList.add('error-bottom-border');
+  displayErrorMessage();
+  minutesInput.classList.add('error-bottom-border')
   }
+}
+
+function secondsError() {
   if (secondsInput.value === '') {
-    displayErrorMessage();
-    secondsInput.classList.add('error-bottom-border');
+  displayErrorMessage();
+  secondsInput.classList.add('error-bottom-border')
   }
+}
+
+function accomplishError() {
   if (accomplishInput.value === '') {
-    displayErrorMessage();
-    accomplishInput.classList.add('error-bottom-border');
+  displayErrorMessage();
+  accomplishInput.classList.add('error-bottom-border')
   }
-  
+}
+
+function toggleTimerView() {
+  timerView.classList.remove('hidden')
+  leftSubContainer.classList.add('hidden')
 }
 
 function preventMinutesE() {
