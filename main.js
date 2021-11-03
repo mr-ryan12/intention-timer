@@ -77,6 +77,7 @@ function checkForInputs(event) {
     displayErrorMessage();
     accomplishInput.classList.add('error-bottom-border');
   }
+  
 }
 
 function preventMinutesE() {
