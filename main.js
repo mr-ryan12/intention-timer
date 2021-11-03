@@ -12,6 +12,17 @@ var secondsInput = document.querySelector('.seconds-input');
 var timerView = document.querySelector('.timer-sub-container')
 var leftSubContainer = document.querySelector('.left-sub-container')
 
+var categorySelection;
+var currentActivity;
+
+//data model
+
+// if (studyButton.classList.contains('study-button-active')) {
+//   activity.category= "study"
+// }
+
+
+
 window.addEventListener('load', preventMinutesE);
 window.addEventListener('load', preventSecondsE);
 studyButton.addEventListener('click', toggleStudyButtonColor);
@@ -69,9 +80,11 @@ function checkForInputs(event) {
   event.preventDefault();
   if ((minutesInput.value === '') || (secondsInput.value === '') || (accomplishInput.value === '')) {
     minutesError();
-    secondsError(); 
+    secondsError();
     accomplishError();
   } else {
+    createDataModel();
+    console.log(currentActivity)
     toggleTimerView();
   }
 }
@@ -118,4 +131,19 @@ function preventSecondsE() {
       e.preventDefault();
     }
   });
+}
+
+function assignCategory() {
+  if (studyButton.classList.contains('study-button-active')) {
+    categorySelection = 'Study'
+  } else if (meditateButton.classList.contains('meditate-button-active')) {
+    categorySelection = 'Meditate'
+  } else if (exerciseButton.classList.contains('exercise-button-active')) {
+    categorySelection = 'Exercise'
+  }
+}
+
+function createDataModel() {
+  assignCategory();
+  currentActivity = new Activity(categorySelection, accomplishInput.value, minutesInput.value, secondsInput.value,)
 }
