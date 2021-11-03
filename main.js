@@ -81,7 +81,7 @@ function preventMinutesE() {
 
 function preventSecondsE() {
   secondsInput.addEventListener("keydown", function(e) {
-    var invalidChars = ['e', '-'];
+    var invalidChars = 'e';
     if (invalidChars.includes(e.key)) {
       e.preventDefault();
     }
