@@ -9,9 +9,11 @@ var accomplishInput = document.querySelector('.accomplish-input');
 var minutesInput = document.querySelector('.minutes-input');
 var secondsInput = document.querySelector('.second-input');
 
+window.addEventListener('load', preventE);
 studyButton.addEventListener('click', toggleStudyButtonColor);
 meditateButton.addEventListener('click', toggleMeditateButtonColor);
 exerciseButton.addEventListener('click', toggleExerciseButtonColor);
+startActivityButton.addEventListener('click', checkForNumbers);
 
 function toggleStudyButtonColor() {
   addStudyButtonColor();
@@ -53,4 +55,18 @@ function addExerciseButtonColor() {
 
 function removeExerciseButtonColor() {
   exerciseButton.classList.remove('exercise-button-active');
+}
+
+function checkForNumbers(event) {
+  event.preventDefault();
+}
+
+function preventE() {
+  minutesInput.addEventListener("keydown", function(e) {
+    var invalidChars = 'e';
+  
+    if (invalidChars.includes(e.key)) {
+      e.preventDefault();
+    }
+  });
 }
