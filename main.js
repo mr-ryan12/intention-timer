@@ -164,7 +164,6 @@ function assignTimer() {
 }
 
 function displayTimerColor() {
-  // startTimer.classList.remove('start-timer');
   if (categorySelection === 'Study') {
     startTimer.classList.add('start-timer-study');
   } else if (categorySelection === 'Meditate') {
