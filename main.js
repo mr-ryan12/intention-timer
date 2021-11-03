@@ -7,9 +7,10 @@ var startActivityButton = document.querySelector('.start-button');
 //inputs
 var accomplishInput = document.querySelector('.accomplish-input');
 var minutesInput = document.querySelector('.minutes-input');
-var secondsInput = document.querySelector('.second-input');
+var secondsInput = document.querySelector('.seconds-input');
 
-window.addEventListener('load', preventE);
+window.addEventListener('load', preventMinutesE);
+window.addEventListener('load', preventSecondsE);
 studyButton.addEventListener('click', toggleStudyButtonColor);
 meditateButton.addEventListener('click', toggleMeditateButtonColor);
 exerciseButton.addEventListener('click', toggleExerciseButtonColor);
@@ -61,10 +62,18 @@ function checkForNumbers(event) {
   event.preventDefault();
 }
 
-function preventE() {
+function preventMinutesE() {
   minutesInput.addEventListener("keydown", function(e) {
     var invalidChars = 'e';
-  
+    if (invalidChars.includes(e.key)) {
+      e.preventDefault();
+    }
+  });
+}
+
+function preventSecondsE() {
+  secondsInput.addEventListener("keydown", function(e) {
+    var invalidChars = 'e';
     if (invalidChars.includes(e.key)) {
       e.preventDefault();
     }
