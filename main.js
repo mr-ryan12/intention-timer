@@ -17,12 +17,13 @@ var leftSubContainer = document.querySelector('.left-sub-container')
 //data model
 var categorySelection;
 var currentActivity;
+var totalSeconds;
+var displayMinutes;
+var displaySeconds;
 
 var activityDescription = document.querySelector('.activity-description')
+var timerCountdown = document.querySelector('.timer-countdown')
 
-// if (studyButton.classList.contains('study-button-active')) {
-//   activity.category= "study"
-// }
 
 
 
@@ -87,7 +88,6 @@ function checkForInputs(event) {
     accomplishError();
   } else {
     createDataModel();
-    console.log(currentActivity)
     assignTimer();
     toggleTimerView();
 
@@ -150,9 +150,18 @@ function assignCategory() {
 
 function createDataModel() {
   assignCategory();
-  currentActivity = new Activity(categorySelection, accomplishInput.value, minutesInput.value, secondsInput.value,)
+  currentActivity = new Activity(categorySelection, accomplishInput.value, minutesInput.value, secondsInput.value)
+  totalSeconds = (parseInt(currentActivity.seconds) + (parseInt(currentActivity.minutes * 60)));
+  displayMinutes = Math.floor(totalSeconds / 60);
+  displaySeconds = totalSeconds % 60;
+  timerCountdown.innerText = `${displayMinutes}:${displaySeconds}`;
 }
 
+
+
+
+
 function assignTimer() {
-  activityDescription.innerText = `${currentActivity.description}`
+  activityDescription.innerText = `${currentActivity.description}`;
+
 }
