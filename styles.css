@@ -219,13 +219,6 @@ main {
   right: -41px;
 }
 
-/* .minutes-input,
-.seconds-input {
-  position: relative;
-  bottom: 15px;
-  right: 35px;
-} */
-
 .seconds-input {
   position: relative;
   right: 31px;
