@@ -9,13 +9,16 @@ var errorMessage = document.querySelector('.error-message');
 var accomplishInput = document.querySelector('.accomplish-input');
 var minutesInput = document.querySelector('.minutes-input');
 var secondsInput = document.querySelector('.seconds-input');
+
+//views
 var timerView = document.querySelector('.timer-sub-container')
 var leftSubContainer = document.querySelector('.left-sub-container')
 
+//data model
 var categorySelection;
 var currentActivity;
 
-//data model
+var activityDescription = document.querySelector('.activity-description')
 
 // if (studyButton.classList.contains('study-button-active')) {
 //   activity.category= "study"
@@ -85,7 +88,9 @@ function checkForInputs(event) {
   } else {
     createDataModel();
     console.log(currentActivity)
+    assignTimer();
     toggleTimerView();
+
   }
 }
 
@@ -146,4 +151,8 @@ function assignCategory() {
 function createDataModel() {
   assignCategory();
   currentActivity = new Activity(categorySelection, accomplishInput.value, minutesInput.value, secondsInput.value,)
+}
+
+function assignTimer() {
+  activityDescription.innerText = `${currentActivity.description}`
 }
