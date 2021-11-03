@@ -11,6 +11,3 @@ class Activity {
   markComplete() {};
   saveToStorage() {};
 }
-
-
-module.exports = Activity;
