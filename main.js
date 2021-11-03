@@ -15,7 +15,7 @@ window.addEventListener('load', preventSecondsE);
 studyButton.addEventListener('click', toggleStudyButtonColor);
 meditateButton.addEventListener('click', toggleMeditateButtonColor);
 exerciseButton.addEventListener('click', toggleExerciseButtonColor);
-startActivityButton.addEventListener('click', checkForNumbers);
+startActivityButton.addEventListener('click', checkForInputs);
 
 function toggleStudyButtonColor() {
   addStudyButtonColor();
@@ -63,10 +63,19 @@ function displayErrorMessage() {
   errorMessage.classList.remove('hidden');
 }
 
-function checkForNumbers(event) {
+function checkForInputs(event) {
   event.preventDefault();
-  if ((minutesInput.value === '') || (secondsInput.value === '') || (accomplishInput.value === '')) {
+  if (minutesInput.value === '') {
     displayErrorMessage();
+    minutesInput.classList.add('error-bottom-border');
+  }
+  if (secondsInput.value === '') {
+    displayErrorMessage();
+    secondsInput.classList.add('error-bottom-border');
+  }
+  if (accomplishInput.value === '') {
+    displayErrorMessage();
+    accomplishInput.classList.add('error-bottom-border');
   }
 }
 
