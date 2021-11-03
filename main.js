@@ -9,13 +9,15 @@ var errorMessage = document.querySelector('.error-message');
 var accomplishInput = document.querySelector('.accomplish-input');
 var minutesInput = document.querySelector('.minutes-input');
 var secondsInput = document.querySelector('.seconds-input');
+var timerView = document.querySelector('.timer-sub-container')
+var leftSubContainer = document.querySelector('.left-sub-container')
 
 window.addEventListener('load', preventMinutesE);
 window.addEventListener('load', preventSecondsE);
 studyButton.addEventListener('click', toggleStudyButtonColor);
 meditateButton.addEventListener('click', toggleMeditateButtonColor);
 exerciseButton.addEventListener('click', toggleExerciseButtonColor);
-startActivityButton.addEventListener('click', checkForNumbers);
+startActivityButton.addEventListener('click', checkForInputs);
 
 function toggleStudyButtonColor() {
   addStudyButtonColor();
@@ -63,11 +65,41 @@ function displayErrorMessage() {
   errorMessage.classList.remove('hidden');
 }
 
-function checkForNumbers(event) {
+function checkForInputs(event) {
   event.preventDefault();
   if ((minutesInput.value === '') || (secondsInput.value === '') || (accomplishInput.value === '')) {
-    displayErrorMessage();
+    minutesError();
+    secondsError(); 
+    accomplishError();
+  } else {
+    toggleTimerView();
   }
+}
+
+function minutesError() {
+  if (minutesInput.value === '') {
+  displayErrorMessage();
+  minutesInput.classList.add('error-bottom-border')
+  }
+}
+
+function secondsError() {
+  if (secondsInput.value === '') {
+  displayErrorMessage();
+  secondsInput.classList.add('error-bottom-border')
+  }
+}
+
+function accomplishError() {
+  if (accomplishInput.value === '') {
+  displayErrorMessage();
+  accomplishInput.classList.add('error-bottom-border')
+  }
+}
+
+function toggleTimerView() {
+  timerView.classList.remove('hidden')
+  leftSubContainer.classList.add('hidden')
 }
 
 function preventMinutesE() {

@@ -189,6 +189,7 @@ main {
   height: 15px;
   width: 25px;
 }
+
 .accomplish {
   position: relative;
   bottom: 111px;
@@ -200,6 +201,10 @@ main {
   bottom: 76px;
   right: -35px;
   padding: 2px 35%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #FFF;
+  color: #FFF;
 }
 
 .minutes-time {
@@ -225,15 +230,16 @@ main {
   position: relative;
   right: 31px;
   padding: 2px 9.5%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #FFF;
+  color: #FFF;
 }
 
 .minutes-input {
   position: relative;
   right: 34px;
   padding: 2px 9.5%;
-}
-
-input[type=text] {
   background: transparent;
   border: none;
   border-bottom: 1px solid #FFF;
@@ -253,11 +259,8 @@ input[type=text] {
   display: none;
 }
 
-input[type=number] {
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid #FFF;
-  color: #FFF;
+.error-bottom-border {
+  border-bottom-color: #EFB7EC;
 }
 
 /* Main background: #2B2733
