@@ -24,6 +24,8 @@ var currentActivity;
 var totalSeconds;
 var displayMinutes;
 var displaySeconds;
+var interval;
+
 
 window.addEventListener('load', preventMinutesE);
 window.addEventListener('load', preventSecondsE);
@@ -32,6 +34,8 @@ meditateButton.addEventListener('click', toggleMeditateButtonColor);
 exerciseButton.addEventListener('click', toggleExerciseButtonColor);
 startActivityButton.addEventListener('click', checkForInputs);
 startTimer.addEventListener('click', function() {currentActivity.countdown()});
+
+
 
 function toggleStudyButtonColor() {
   addStudyButtonColor();
@@ -176,11 +180,19 @@ function displayTimerColor() {
 }
 
 function decrement() {
-  totalSeconds--;
-  displayMinutes = Math.floor(totalSeconds / 60);
-  displaySeconds = totalSeconds % 60;
-  if (displaySeconds < 10) {
-    displaySeconds = "0" + (totalSeconds % 60);
+  if (totalSeconds > 0) {
+    totalSeconds--;
+    displayMinutes = Math.floor(totalSeconds / 60);
+    displaySeconds = totalSeconds % 60;
+    if (displaySeconds < 10) {
+      displaySeconds = "0" + (totalSeconds % 60);
+    }
+    if (totalSeconds === 0) {
+      alert("The time is up and your activity is completed")
+      clearInterval(interval)
+      timerCountdown.innerText = "00:00"
+    } else {
+      timerCountdown.innerText = `${displayMinutes}:${displaySeconds}`;
+    }
   }
-  timerCountdown.innerText = `${displayMinutes}:${displaySeconds}`;
 }
