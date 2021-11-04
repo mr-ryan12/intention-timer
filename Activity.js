@@ -8,9 +8,9 @@ class Activity {
     this.id = Date.now();
   }
   countdown() {
-    setInterval(decrement, 1000);
+    interval = setInterval(decrement, 1000);
   };
-  
+
   markComplete() {};
   saveToStorage() {};
 }
