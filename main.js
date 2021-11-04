@@ -4,6 +4,7 @@ var meditateButton = document.querySelector('.meditate-button');
 var exerciseButton = document.querySelector('.exercise-button');
 var startActivityButton = document.querySelector('.start-button');
 var errorMessage = document.querySelector('.error-message');
+var startTimer = document.querySelector('.start-timer');
 
 //inputs
 var accomplishInput = document.querySelector('.accomplish-input');
@@ -11,21 +12,19 @@ var minutesInput = document.querySelector('.minutes-input');
 var secondsInput = document.querySelector('.seconds-input');
 
 //views
-var timerView = document.querySelector('.timer-sub-container')
-var leftSubContainer = document.querySelector('.left-sub-container')
+var timerView = document.querySelector('.timer-sub-container');
+var leftSubContainer = document.querySelector('.left-sub-container');
+var activityStatus = document.querySelector('.new-activity');
 
 //data model
 var categorySelection;
 var currentActivity;
-var totalSeconds;
-var displayMinutes;
-var displaySeconds;
+// var totalSeconds;
+// var displayMinutes;
+// var displaySeconds;
 
 var activityDescription = document.querySelector('.activity-description')
 var timerCountdown = document.querySelector('.timer-countdown')
-
-
-
 
 window.addEventListener('load', preventMinutesE);
 window.addEventListener('load', preventSecondsE);
@@ -86,11 +85,11 @@ function checkForInputs(event) {
     minutesError();
     secondsError();
     accomplishError();
+    // checkButtonClick();
   } else {
     createDataModel();
     assignTimer();
     toggleTimerView();
-
   }
 }
 
@@ -116,8 +115,10 @@ function accomplishError() {
 }
 
 function toggleTimerView() {
-  timerView.classList.remove('hidden')
-  leftSubContainer.classList.add('hidden')
+  timerView.classList.remove('hidden');
+  leftSubContainer.classList.add('hidden');
+  displayTimerColor();
+  activityStatus.innerText = 'Current Activity';
 }
 
 function preventMinutesE() {
@@ -149,19 +150,38 @@ function assignCategory() {
 }
 
 function createDataModel() {
+  var totalSeconds;
+  var displayMinutes;
+  var displaySeconds;
+  
   assignCategory();
   currentActivity = new Activity(categorySelection, accomplishInput.value, minutesInput.value, secondsInput.value)
   totalSeconds = (parseInt(currentActivity.seconds) + (parseInt(currentActivity.minutes * 60)));
   displayMinutes = Math.floor(totalSeconds / 60);
   displaySeconds = totalSeconds % 60;
+  if (displaySeconds < 10) {
+    displaySeconds = "0" + (totalSeconds % 60);
+  }
   timerCountdown.innerText = `${displayMinutes}:${displaySeconds}`;
 }
 
-
-
-
-
+// Possibly refactor/remove in future
 function assignTimer() {
   activityDescription.innerText = `${currentActivity.description}`;
-
 }
+
+function displayTimerColor() {
+  if (categorySelection === 'Study') {
+    startTimer.classList.add('start-timer-study');
+  } else if (categorySelection === 'Meditate') {
+    startTimer.classList.add('start-timer-meditate');
+  } else if (ecategorySelection === 'Exercise') {
+    startTimer.classList.add('start-timer-exercise');
+  }
+}
+
+// function checkButtonClick() {
+//   if ((!studyButton.classList.contains('study-button-active') || (!meditateButton.classList.contains('meditate-button-active') || (!exerciseButton.classList.contains('exercise-button-active')) {
+//     displayErrorMessage();
+//   }
+// }
