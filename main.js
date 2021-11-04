@@ -15,16 +15,15 @@ var secondsInput = document.querySelector('.seconds-input');
 var timerView = document.querySelector('.timer-sub-container');
 var leftSubContainer = document.querySelector('.left-sub-container');
 var activityStatus = document.querySelector('.new-activity');
+var activityDescription = document.querySelector('.activity-description');
+var timerCountdown = document.querySelector('.timer-countdown');
 
 //data model
 var categorySelection;
 var currentActivity;
-// var totalSeconds;
-// var displayMinutes;
-// var displaySeconds;
-
-var activityDescription = document.querySelector('.activity-description')
-var timerCountdown = document.querySelector('.timer-countdown')
+var totalSeconds;
+var displayMinutes;
+var displaySeconds;
 
 window.addEventListener('load', preventMinutesE);
 window.addEventListener('load', preventSecondsE);
@@ -32,6 +31,7 @@ studyButton.addEventListener('click', toggleStudyButtonColor);
 meditateButton.addEventListener('click', toggleMeditateButtonColor);
 exerciseButton.addEventListener('click', toggleExerciseButtonColor);
 startActivityButton.addEventListener('click', checkForInputs);
+startTimer.addEventListener('click', function() {currentActivity.countdown()});
 
 function toggleStudyButtonColor() {
   addStudyButtonColor();
@@ -150,10 +150,6 @@ function assignCategory() {
 }
 
 function createDataModel() {
-  var totalSeconds;
-  var displayMinutes;
-  var displaySeconds;
-  
   assignCategory();
   currentActivity = new Activity(categorySelection, accomplishInput.value, minutesInput.value, secondsInput.value)
   totalSeconds = (parseInt(currentActivity.seconds) + (parseInt(currentActivity.minutes * 60)));
@@ -165,7 +161,6 @@ function createDataModel() {
   timerCountdown.innerText = `${displayMinutes}:${displaySeconds}`;
 }
 
-// Possibly refactor/remove in future
 function assignTimer() {
   activityDescription.innerText = `${currentActivity.description}`;
 }
@@ -180,8 +175,12 @@ function displayTimerColor() {
   }
 }
 
-// function checkButtonClick() {
-//   if ((!studyButton.classList.contains('study-button-active') || (!meditateButton.classList.contains('meditate-button-active') || (!exerciseButton.classList.contains('exercise-button-active')) {
-//     displayErrorMessage();
-//   }
-// }
+function decrement() {
+  totalSeconds--;
+  displayMinutes = Math.floor(totalSeconds / 60);
+  displaySeconds = totalSeconds % 60;
+  if (displaySeconds < 10) {
+    displaySeconds = "0" + (totalSeconds % 60);
+  }
+  timerCountdown.innerText = `${displayMinutes}:${displaySeconds}`;
+}

@@ -7,7 +7,10 @@ class Activity {
     this.completed = false;
     this.id = Date.now();
   }
-  countdown() {};
+  countdown() {
+    setInterval(decrement, 1000);
+  };
+  
   markComplete() {};
   saveToStorage() {};
 }
