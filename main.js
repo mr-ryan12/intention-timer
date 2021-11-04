@@ -19,15 +19,12 @@ var activityStatus = document.querySelector('.new-activity');
 //data model
 var categorySelection;
 var currentActivity;
-var totalSeconds;
-var displayMinutes;
-var displaySeconds;
+// var totalSeconds;
+// var displayMinutes;
+// var displaySeconds;
 
 var activityDescription = document.querySelector('.activity-description')
 var timerCountdown = document.querySelector('.timer-countdown')
-
-
-
 
 window.addEventListener('load', preventMinutesE);
 window.addEventListener('load', preventSecondsE);
@@ -153,11 +150,18 @@ function assignCategory() {
 }
 
 function createDataModel() {
+  var totalSeconds;
+  var displayMinutes;
+  var displaySeconds;
+  
   assignCategory();
   currentActivity = new Activity(categorySelection, accomplishInput.value, minutesInput.value, secondsInput.value)
   totalSeconds = (parseInt(currentActivity.seconds) + (parseInt(currentActivity.minutes * 60)));
   displayMinutes = Math.floor(totalSeconds / 60);
   displaySeconds = totalSeconds % 60;
+  if (displaySeconds < 10) {
+    displaySeconds = "0" + (totalSeconds % 60);
+  }
   timerCountdown.innerText = `${displayMinutes}:${displaySeconds}`;
 }
 

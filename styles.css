@@ -230,11 +230,11 @@ main {
   position: relative;
   bottom: 76px;
   right: -35px;
-  padding: 2px 35%;
   background: transparent;
   border: none;
   border-bottom: 1px solid #FFF;
   color: #FFF;
+  width: 620px;
 }
 
 .minutes-time {
@@ -246,27 +246,27 @@ main {
 .seconds-time{
   position: relative;
   bottom: 52px;
-  right: -41px;
+  right: -90px;
 }
 
 .seconds-input {
   position: relative;
-  right: 31px;
-  padding: 2px 9.5%;
+  right: -18px;
   background: transparent;
   border: none;
   border-bottom: 1px solid #FFF;
   color: #FFF;
+  width: 243px;
 }
 
 .minutes-input {
   position: relative;
   right: 34px;
-  padding: 2px 9.5%;
   background: transparent;
   border: none;
   border-bottom: 1px solid #FFF;
   color: #FFF;
+  width: 243px;
 }
 
 .start-button {
