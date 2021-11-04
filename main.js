@@ -12,8 +12,9 @@ var minutesInput = document.querySelector('.minutes-input');
 var secondsInput = document.querySelector('.seconds-input');
 
 //views
-var timerView = document.querySelector('.timer-sub-container')
-var leftSubContainer = document.querySelector('.left-sub-container')
+var timerView = document.querySelector('.timer-sub-container');
+var leftSubContainer = document.querySelector('.left-sub-container');
+var activityStatus = document.querySelector('.new-activity');
 
 //data model
 var categorySelection;
@@ -87,6 +88,7 @@ function checkForInputs(event) {
     minutesError();
     secondsError();
     accomplishError();
+    // checkButtonClick();
   } else {
     createDataModel();
     assignTimer();
@@ -119,6 +121,7 @@ function toggleTimerView() {
   timerView.classList.remove('hidden');
   leftSubContainer.classList.add('hidden');
   displayTimerColor();
+  activityStatus.innerText = 'Current Activity';
 }
 
 function preventMinutesE() {
@@ -172,3 +175,9 @@ function displayTimerColor() {
     startTimer.classList.add('start-timer-exercise');
   }
 }
+
+// function checkButtonClick() {
+//   if ((!studyButton.classList.contains('study-button-active') || (!meditateButton.classList.contains('meditate-button-active') || (!exerciseButton.classList.contains('exercise-button-active')) {
+//     displayErrorMessage();
+//   }
+// }
