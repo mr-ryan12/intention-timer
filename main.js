@@ -5,6 +5,7 @@ var exerciseButton = document.querySelector('.exercise-button');
 var startActivityButton = document.querySelector('.start-button');
 var errorMessage = document.querySelector('.error-message');
 var startTimer = document.querySelector('.start-timer');
+var logActivityButton = document.querySelector('.log-activity');
 
 //inputs
 var accomplishInput = document.querySelector('.accomplish-input');
@@ -17,6 +18,9 @@ var leftSubContainer = document.querySelector('.left-sub-container');
 var activityStatus = document.querySelector('.new-activity');
 var activityDescription = document.querySelector('.activity-description');
 var timerCountdown = document.querySelector('.timer-countdown');
+var haventLoggedMessage = document.querySelector('.havent-logged')
+var completeFormMessage = document.querySelector('.complete-form')
+var pastActivityCard = document.querySelector('.past-activities-card')
 
 //data model
 var categorySelection;
@@ -34,7 +38,7 @@ meditateButton.addEventListener('click', toggleMeditateButtonColor);
 exerciseButton.addEventListener('click', toggleExerciseButtonColor);
 startActivityButton.addEventListener('click', checkForInputs);
 startTimer.addEventListener('click', function() {currentActivity.countdown()});
-
+logActivityButton.addEventListener('click', logActivity)
 
 
 function toggleStudyButtonColor() {
@@ -208,4 +212,16 @@ function displayComplete () {
 
 function timerAtZero () {
   timerCountdown.innerText = "00:00"
+}
+
+function logActivity() {
+  hidePastActivityMessages(); 
+
+}
+
+
+function hidePastActivityMessages () {
+  haventLoggedMessage.classList.add('hidden')
+  completeFormMessage.classList.add('hidden')
+  pastActivityCard.classList.remove('hidden')
 }
