@@ -300,6 +300,21 @@ main {
   justify-content: center;
 }
 
+.activity-description {
+  font-size: 20px;
+  margin: 0;
+  font-weight: 200;
+}
+
+.log-activity {
+  width: 180px;
+  height: 25px;
+  font-size: 12px;
+  background-color: #FFF;
+  border: 0;
+  border-radius: 2px;
+}
+
 /* Main background: #2B2733
 Text on main background: #CBC9CF
 Header, cards: #46424D
