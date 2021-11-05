@@ -188,7 +188,6 @@ function decrement() {
       displaySeconds = "0" + (totalSeconds % 60);
     }
     if (totalSeconds === 0) {
-      alert("The time is up and your activity is completed")
       clearInterval(interval)
       timerCountdown.innerText = "00:00"
     } else {
