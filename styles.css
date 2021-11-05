@@ -286,6 +286,12 @@ main {
   border-bottom-color: #EFB7EC;
 }
 
+.timer-countdown {
+  font-size: 70px;
+  font-weight: 700;
+  font-family: sans-serif;
+}
+
 /* Main background: #2B2733
 Text on main background: #CBC9CF
 Header, cards: #46424D
