@@ -39,6 +39,8 @@ main {
   flex-direction: column;
   justify-content: space-around;
   padding: 2px 65px;
+  border-radius: 10px;
+  filter: drop-shadow(3px 3px #26222D);
 }
 
 .timer-sub-container{
@@ -284,6 +286,33 @@ main {
 
 .error-bottom-border {
   border-bottom-color: #EFB7EC;
+}
+
+.past-activities-card {
+  background-color: #46424D;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 10px;
+  height:18%;
+  filter: drop-shadow(3px 3px #26222D);
+}
+
+#past-activity-title {
+  font-size: 15px;
+  font-weight: bolder;
+  margin-bottom: -14px;
+}
+
+hr {
+  margin: 15px;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 2px;
+  height: 32px;
+}
+
+.card-words-holder {
+  margin-left:15px
 }
 
 /* Main background: #2B2733
