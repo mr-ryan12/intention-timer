@@ -293,8 +293,14 @@ main {
   display: flex;
   justify-content: space-between;
   border-radius: 10px;
-  height:20%;
+  height:18%;
   filter: drop-shadow(3px 3px #26222D);
+}
+
+#past-activity-title {
+  font-size: 15px;
+  font-weight: bolder;
+  margin-bottom: -14px;
 }
 
 hr {
@@ -302,7 +308,7 @@ hr {
   border-width: 2px;
   border-style: solid;
   border-radius: 2px;
-  height: 20px;
+  height: 32px;
 }
 
 .card-words-holder {
