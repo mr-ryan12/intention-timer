@@ -159,9 +159,7 @@ function createDataModel() {
   totalSeconds = (parseInt(currentActivity.seconds) + (parseInt(currentActivity.minutes * 60)));
   displayMinutes = Math.floor(totalSeconds / 60);
   displaySeconds = totalSeconds % 60;
-  if (displaySeconds < 10) {
-    displaySeconds = "0" + (totalSeconds % 60);
-  }
+  ensureDoubleZeros(); 
   timerCountdown.innerText = `${displayMinutes}:${displaySeconds}`;
 }
 
@@ -179,20 +177,35 @@ function displayTimerColor() {
   }
 }
 
+function ensureDoubleZeros() {
+  if (displayMinutes < 10) {
+    displayMinutes = "0" + Math.floor(totalSeconds / 60);
+  }
+  if (displaySeconds < 10) {
+    displaySeconds = "0" + (totalSeconds % 60);
+  }
+}
+
 function decrement() {
   if (totalSeconds > 0) {
     totalSeconds--;
     displayMinutes = Math.floor(totalSeconds / 60);
     displaySeconds = totalSeconds % 60;
-    if (displaySeconds < 10) {
-      displaySeconds = "0" + (totalSeconds % 60);
-    }
+    ensureDoubleZeros()
     if (totalSeconds === 0) {
-      alert("The time is up and your activity is completed")
-      clearInterval(interval)
-      timerCountdown.innerText = "00:00"
+      clearInterval(interval);
+      displayComplete();
+      timerAtZero();
     } else {
       timerCountdown.innerText = `${displayMinutes}:${displaySeconds}`;
     }
   }
+}
+
+function displayComplete () {
+  startTimer.innerText = "COMPLETE!"
+}
+
+function timerAtZero () {
+  timerCountdown.innerText = "00:00"
 }
