@@ -159,9 +159,7 @@ function createDataModel() {
   totalSeconds = (parseInt(currentActivity.seconds) + (parseInt(currentActivity.minutes * 60)));
   displayMinutes = Math.floor(totalSeconds / 60);
   displaySeconds = totalSeconds % 60;
-  if (displaySeconds < 10) {
-    displaySeconds = "0" + (totalSeconds % 60);
-  }
+  ensureDoubleZeros(); 
   timerCountdown.innerText = `${displayMinutes}:${displaySeconds}`;
 }
 
@@ -179,14 +177,21 @@ function displayTimerColor() {
   }
 }
 
+function ensureDoubleZeros() {
+  if (displayMinutes < 10) {
+    displayMinutes = "0" + Math.floor(totalSeconds / 60);
+  }
+  if (displaySeconds < 10) {
+    displaySeconds = "0" + (totalSeconds % 60);
+  }
+}
+
 function decrement() {
   if (totalSeconds > 0) {
     totalSeconds--;
     displayMinutes = Math.floor(totalSeconds / 60);
     displaySeconds = totalSeconds % 60;
-    if (displaySeconds < 10) {
-      displaySeconds = "0" + (totalSeconds % 60);
-    }
+    ensureDoubleZeros()
     if (totalSeconds === 0) {
       clearInterval(interval);
       displayComplete();
