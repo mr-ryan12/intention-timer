@@ -188,10 +188,19 @@ function decrement() {
       displaySeconds = "0" + (totalSeconds % 60);
     }
     if (totalSeconds === 0) {
-      clearInterval(interval)
-      timerCountdown.innerText = "00:00"
+      clearInterval(interval);
+      displayComplete();
+      timerAtZero();
     } else {
       timerCountdown.innerText = `${displayMinutes}:${displaySeconds}`;
     }
   }
+}
+
+function displayComplete () {
+  startTimer.innerText = "COMPLETE!"
+}
+
+function timerAtZero () {
+  timerCountdown.innerText = "00:00"
 }
