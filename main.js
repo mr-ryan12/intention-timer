@@ -85,7 +85,8 @@ function displayErrorMessage() {
 
 function checkForInputs(event) {
   event.preventDefault();
-  if ((minutesInput.value === '') || (secondsInput.value === '') || (accomplishInput.value === '')) {
+  assignCategory();
+  if ((!categorySelection) || (minutesInput.value === '') || (secondsInput.value === '') || (accomplishInput.value === '')) {
     minutesError();
     secondsError();
     accomplishError();
@@ -154,7 +155,6 @@ function assignCategory() {
 }
 
 function createDataModel() {
-  assignCategory();
   currentActivity = new Activity(categorySelection, accomplishInput.value, minutesInput.value, secondsInput.value)
   totalSeconds = (parseInt(currentActivity.seconds) + (parseInt(currentActivity.minutes * 60)));
   displayMinutes = Math.floor(totalSeconds / 60);
@@ -174,7 +174,7 @@ function displayTimerColor() {
     startTimer.classList.add('start-timer-study');
   } else if (categorySelection === 'Meditate') {
     startTimer.classList.add('start-timer-meditate');
-  } else if (ecategorySelection === 'Exercise') {
+  } else if (categorySelection === 'Exercise') {
     startTimer.classList.add('start-timer-exercise');
   }
 }
