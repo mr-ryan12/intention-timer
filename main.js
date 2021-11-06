@@ -6,6 +6,8 @@ var startActivityButton = document.querySelector('.start-button');
 var errorMessage = document.querySelector('.error-message');
 var startTimer = document.querySelector('.start-timer');
 var logActivityButton = document.querySelector('.log-activity');
+var createNewActivityButton = document.querySelector('.create-new-activity')
+
 
 //inputs
 var accomplishInput = document.querySelector('.accomplish-input');
@@ -39,7 +41,7 @@ exerciseButton.addEventListener('click', toggleExerciseButtonColor);
 startActivityButton.addEventListener('click', checkForInputs);
 startTimer.addEventListener('click', function() {currentActivity.countdown()});
 logActivityButton.addEventListener('click', logActivity)
-
+createNewActivityButton.addEventListener('click', returnHome)
 
 function toggleStudyButtonColor() {
   addStudyButtonColor();
@@ -266,7 +268,6 @@ function displayLoggedActivities() {
   hideTimer();
 }
 
-var createNewActivityButton = document.querySelector('.create-new-activity')
 
 function hideTimer() {
   activityDescription.classList.add('hidden');
@@ -274,6 +275,22 @@ function hideTimer() {
   startTimer.classList.add('hidden');
   logActivityButton.classList.add('hidden');
   createNewActivityButton.classList.remove('hidden')
-
   cardsHolder.classList.remove('hidden')
+  activityStatus.innerText = "Completed Activity"
+}
+
+function returnHome() {
+  show(leftSubContainer);
+  hide(timerView);
+  activityStatus.innerText = "New Activity"
+}
+
+
+
+function hide(element) {
+  element.classList.add('hidden')
+}
+
+function show(element) {
+  element.classList.remove('hidden')
 }
