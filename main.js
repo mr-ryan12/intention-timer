@@ -243,6 +243,7 @@ var cardsHolder = document.querySelector('.past-activities-cards-holder')
 
 function displayLoggedActivities() {
   var color;
+
   cardsHolder.innerHTML = ``
   for (var i = 0; i < loggedActivities.length; i++) {
     if (loggedActivities[i].category === 'Meditate') {
@@ -262,4 +263,13 @@ function displayLoggedActivities() {
     <hr style="color:${color}"></hr>
   </section>`
   }
+  hideTimer();
+}
+
+function hideTimer() {
+  activityDescription.classList.add('hidden');
+  timerCountdown.classList.add('hidden');
+  startTimer.classList.add('hidden');
+  logActivityButton.classList.add('hidden');
+  cardsHolder.classList.remove('hidden')
 }
