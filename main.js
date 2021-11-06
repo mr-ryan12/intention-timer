@@ -163,7 +163,7 @@ function createDataModel() {
   totalSeconds = (parseInt(currentActivity.seconds) + (parseInt(currentActivity.minutes * 60)));
   displayMinutes = Math.floor(totalSeconds / 60);
   displaySeconds = totalSeconds % 60;
-  ensureDoubleZeros(); 
+  ensureDoubleZeros();
   timerCountdown.innerText = `${displayMinutes}:${displaySeconds}`;
 }
 
@@ -215,7 +215,7 @@ function timerAtZero() {
 }
 
 function logActivity() {
-  hidePastActivityMessages(); 
+  hidePastActivityMessages();
   saveActivities();
 }
 
@@ -224,7 +224,7 @@ function logActivity() {
 // hide past activity message, show cards
 // push current activity to array
 // invoke function which iterates through array and displays all elements as cards
-/////// for loop, for each i, += innerHTML 
+/////// for loop, for each i, += innerHTML
 
 function hidePastActivityMessages () {
   haventLoggedMessage.classList.add('hidden')
@@ -232,7 +232,7 @@ function hidePastActivityMessages () {
   pastActivityCard.classList.remove('hidden')
 }
 
-var loggedActivities = [] 
+var loggedActivities = []
 
 function saveActivities() {
   loggedActivities.push(currentActivity)
@@ -242,8 +242,16 @@ function saveActivities() {
 var cardsHolder = document.querySelector('.past-activities-cards-holder')
 
 function displayLoggedActivities() {
+  var color;
   cardsHolder.innerHTML = ``
   for (var i = 0; i < loggedActivities.length; i++) {
+    if (loggedActivities[i].category === 'Meditate') {
+      color = "#C278FD";
+    } else if (loggedActivities[i].category === 'Study') {
+      color = "#B3FD78";
+    } else if (loggedActivities[i].category === 'Exercise') {
+      color = "#FD8078";
+    }
     cardsHolder.innerHTML += `
     <section class="past-activities-card" id="${loggedActivities[i].id}">
     <section class="card-words-holder" id="card-words-holder">
@@ -251,7 +259,7 @@ function displayLoggedActivities() {
       <h2 class="past-activity-time" id="past-activity-time">${loggedActivities[i].minutes} MIN ${loggedActivities[i].seconds} SECONDS</h2>
       <h3 class="past-activity-desciption" id="past-activity-description">${loggedActivities[i].description}</h3>
     </section>
-    <hr></hr>
+    <hr style="color:${color}"></hr>
   </section>`
   }
 }
