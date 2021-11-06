@@ -11,6 +11,17 @@ class Activity {
     interval = setInterval(decrement, 1000);
   };
 
-  markComplete() {};
-  saveToStorage() {};
+  markComplete() {
+    logActivity()
+    //Change timer to complete
+    //show log activity button
+
+
+  };
+  saveToStorage() {
+    //save to STORAGE
+    //completed activity title
+    //create new activity button appear
+    //
+  };
 }

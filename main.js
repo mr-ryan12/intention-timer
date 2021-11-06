@@ -6,6 +6,8 @@ var startActivityButton = document.querySelector('.start-button');
 var errorMessage = document.querySelector('.error-message');
 var startTimer = document.querySelector('.start-timer');
 var logActivityButton = document.querySelector('.log-activity');
+var createNewActivityButton = document.querySelector('.create-new-activity')
+
 
 //inputs
 var accomplishInput = document.querySelector('.accomplish-input');
@@ -18,9 +20,10 @@ var leftSubContainer = document.querySelector('.left-sub-container');
 var activityStatus = document.querySelector('.new-activity');
 var activityDescription = document.querySelector('.activity-description');
 var timerCountdown = document.querySelector('.timer-countdown');
-var haventLoggedMessage = document.querySelector('.havent-logged')
-var completeFormMessage = document.querySelector('.complete-form')
-var pastActivityCard = document.querySelector('.past-activities-card')
+var haventLoggedMessage = document.querySelector('.havent-logged');
+var completeFormMessage = document.querySelector('.complete-form');
+var pastActivityCard = document.querySelector('.past-activities-card');
+var cardsHolder = document.querySelector('.past-activities-cards-holder');
 
 //data model
 var categorySelection;
@@ -31,6 +34,10 @@ var displaySeconds;
 var interval;
 
 
+var loggedActivities = []
+var activitiesArray;
+
+
 window.addEventListener('load', preventMinutesE);
 window.addEventListener('load', preventSecondsE);
 studyButton.addEventListener('click', toggleStudyButtonColor);
@@ -38,8 +45,8 @@ meditateButton.addEventListener('click', toggleMeditateButtonColor);
 exerciseButton.addEventListener('click', toggleExerciseButtonColor);
 startActivityButton.addEventListener('click', checkForInputs);
 startTimer.addEventListener('click', function() {currentActivity.countdown()});
-logActivityButton.addEventListener('click', logActivity)
-
+// logActivityButton.addEventListener('click', function() {currentActivity.markComplete()})
+createNewActivityButton.addEventListener('click', returnHome)
 
 function toggleStudyButtonColor() {
   addStudyButtonColor();
@@ -214,17 +221,20 @@ function timerAtZero() {
   timerCountdown.innerText = "00:00"
 }
 
+//this is the existing and functioning logActivity function!
 function logActivity() {
   hidePastActivityMessages();
   saveActivities();
 }
 
-//goal: log our last instance of the data model as a past activity card
-// event listener on log activity button
-// hide past activity message, show cards
-// push current activity to array
-// invoke function which iterates through array and displays all elements as cards
-/////// for loop, for each i, += innerHTML
+function logActivity() {
+  storeCurrentActivity();
+  displayLocalStorage();
+  hidePastActivityMessages();
+  saveActivities();
+}
+
+
 
 function hidePastActivityMessages () {
   haventLoggedMessage.classList.add('hidden')
@@ -232,14 +242,92 @@ function hidePastActivityMessages () {
   pastActivityCard.classList.remove('hidden')
 }
 
-var loggedActivities = []
 
 function saveActivities() {
   loggedActivities.push(currentActivity)
   displayLoggedActivities();
 }
 
-var cardsHolder = document.querySelector('.past-activities-cards-holder')
+
+
+// function displayLoggedActivities() {
+//   var color;
+//
+//   cardsHolder.innerHTML = ``
+//   for (var i = 0; i < loggedActivities.length; i++) {
+//     if (loggedActivities[i].category === 'Meditate') {
+//       color = "#C278FD";
+//     } else if (loggedActivities[i].category === 'Study') {
+//       color = "#B3FD78";
+//     } else if (loggedActivities[i].category === 'Exercise') {
+//       color = "#FD8078";
+//     }
+//     cardsHolder.innerHTML += `
+//     <section class="past-activities-card" id="${loggedActivities[i].id}">
+//     <section class="card-words-holder" id="card-words-holder">
+//       <p class="past-activity-title" id="past-activity-title">${loggedActivities[i].category}</p>
+//       <h2 class="past-activity-time" id="past-activity-time">${loggedActivities[i].minutes} MIN ${loggedActivities[i].seconds} SECONDS</h2>
+//       <h3 class="past-activity-desciption" id="past-activity-description">${loggedActivities[i].description}</h3>
+//     </section>
+//     <hr style="color:${color}"></hr>
+//   </section>`
+//   }
+//   hideTimer();
+// }
+
+
+function hideTimer() {
+  hide(activityDescription)
+  hide(timerCountdown)
+  hide(startTimer)
+  hide(logActivityButton)
+  show(createNewActivityButton)
+  show(cardsHolder)
+  updateActivityStatus("Completed Activity")
+}
+
+function updateActivityStatus(newStatus) {
+  activityStatus.innerText = newStatus
+}
+
+function returnHome() {
+  location.reload();
+  // show(leftSubContainer);
+  // hide(timerView);
+  // activityStatus.innerText = "New Activity"
+}
+
+
+
+function hide(element) {
+  element.classList.add('hidden')
+}
+
+function show(element) {
+  element.classList.remove('hidden')
+}
+
+//////BUILDING THE LOCAL STORAGE
+
+
+
+logActivityButton.addEventListener('click', storeCurrentActivity)
+
+function storeCurrentActivity() {
+  if (localStorage.getItem('activitiesArray')) {
+    loggedActivities = JSON.parse(localStorage.getItem('activitiesArray'));
+    loggedActivities.unshift(currentActivity);
+    displayLoggedActivities();
+    activitiesArray = JSON.stringify(loggedActivities)
+    localStorage.removeItem('activitiesArray');
+    localStorage.setItem('activitiesArray', activitiesArray)
+  } else {
+    loggedActivities.unshift(currentActivity)
+    displayLoggedActivities();
+    activitiesArray = JSON.stringify(loggedActivities)
+    localStorage.setItem('activitiesArray', activitiesArray)
+  }
+}
 
 function displayLoggedActivities() {
   var color;
@@ -264,16 +352,4 @@ function displayLoggedActivities() {
   </section>`
   }
   hideTimer();
-}
-
-var createNewActivityButton = document.querySelector('.create-new-activity')
-
-function hideTimer() {
-  activityDescription.classList.add('hidden');
-  timerCountdown.classList.add('hidden');
-  startTimer.classList.add('hidden');
-  logActivityButton.classList.add('hidden');
-  createNewActivityButton.classList.remove('hidden')
-
-  cardsHolder.classList.remove('hidden')
 }
