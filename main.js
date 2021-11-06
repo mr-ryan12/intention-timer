@@ -47,6 +47,7 @@ startActivityButton.addEventListener('click', checkForInputs);
 startTimer.addEventListener('click', function() {currentActivity.countdown()});
 // logActivityButton.addEventListener('click', function() {currentActivity.markComplete()})
 createNewActivityButton.addEventListener('click', returnHome)
+logActivityButton.addEventListener('click', storeCurrentActivity)
 
 function toggleStudyButtonColor() {
   addStudyButtonColor();
@@ -248,34 +249,6 @@ function saveActivities() {
   displayLoggedActivities();
 }
 
-
-
-// function displayLoggedActivities() {
-//   var color;
-//
-//   cardsHolder.innerHTML = ``
-//   for (var i = 0; i < loggedActivities.length; i++) {
-//     if (loggedActivities[i].category === 'Meditate') {
-//       color = "#C278FD";
-//     } else if (loggedActivities[i].category === 'Study') {
-//       color = "#B3FD78";
-//     } else if (loggedActivities[i].category === 'Exercise') {
-//       color = "#FD8078";
-//     }
-//     cardsHolder.innerHTML += `
-//     <section class="past-activities-card" id="${loggedActivities[i].id}">
-//     <section class="card-words-holder" id="card-words-holder">
-//       <p class="past-activity-title" id="past-activity-title">${loggedActivities[i].category}</p>
-//       <h2 class="past-activity-time" id="past-activity-time">${loggedActivities[i].minutes} MIN ${loggedActivities[i].seconds} SECONDS</h2>
-//       <h3 class="past-activity-desciption" id="past-activity-description">${loggedActivities[i].description}</h3>
-//     </section>
-//     <hr style="color:${color}"></hr>
-//   </section>`
-//   }
-//   hideTimer();
-// }
-
-
 function hideTimer() {
   hide(activityDescription)
   hide(timerCountdown)
@@ -294,9 +267,6 @@ function updateActivityStatus(newStatus) {
 
 function returnHome() {
   location.reload();
-  // show(leftSubContainer);
-  // hide(timerView);
-  // activityStatus.innerText = "New Activity"
 }
 
 
@@ -312,8 +282,6 @@ function show(element) {
 //////BUILDING THE LOCAL STORAGE
 
 
-
-logActivityButton.addEventListener('click', storeCurrentActivity)
 
 function storeCurrentActivity() {
   if (localStorage.getItem('activitiesArray')) {
@@ -343,8 +311,6 @@ function displayOnLoad() {
     displayLoggedActivities()
   }
 }
-
-
 
 function displayLoggedActivities() {
   var color;
