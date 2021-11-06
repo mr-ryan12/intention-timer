@@ -104,6 +104,8 @@ main {
 .right-container {
   width: 50%;
   border-left: 3px solid #46424D;
+  display: flex;
+  flex-direction: column;
 }
 
 .right-container > p {
@@ -280,10 +282,6 @@ main {
   height: 26px;
 }
 
-.hidden {
-  display: none;
-}
-
 .error-bottom-border {
   border-bottom-color: #EFB7EC;
 }
@@ -315,14 +313,16 @@ main {
   background-color: #FFF;
   border: 0;
   border-radius: 2px;
+}
 
 .past-activities-card {
   background-color: #46424D;
   display: flex;
   justify-content: space-between;
   border-radius: 10px;
-  height:18%;
+  height: 135px;
   filter: drop-shadow(3px 3px #26222D);
+  margin-bottom: 10px;
 }
 
 #past-activity-title {
@@ -341,6 +341,10 @@ hr {
 
 .card-words-holder {
   margin-left:15px
+}
+
+.hidden {
+  display: none;
 }
 
 /* Main background: #2B2733

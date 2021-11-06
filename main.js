@@ -5,6 +5,7 @@ var exerciseButton = document.querySelector('.exercise-button');
 var startActivityButton = document.querySelector('.start-button');
 var errorMessage = document.querySelector('.error-message');
 var startTimer = document.querySelector('.start-timer');
+var logActivityButton = document.querySelector('.log-activity');
 
 //inputs
 var accomplishInput = document.querySelector('.accomplish-input');
@@ -17,6 +18,9 @@ var leftSubContainer = document.querySelector('.left-sub-container');
 var activityStatus = document.querySelector('.new-activity');
 var activityDescription = document.querySelector('.activity-description');
 var timerCountdown = document.querySelector('.timer-countdown');
+var haventLoggedMessage = document.querySelector('.havent-logged')
+var completeFormMessage = document.querySelector('.complete-form')
+var pastActivityCard = document.querySelector('.past-activities-card')
 
 //data model
 var categorySelection;
@@ -34,7 +38,7 @@ meditateButton.addEventListener('click', toggleMeditateButtonColor);
 exerciseButton.addEventListener('click', toggleExerciseButtonColor);
 startActivityButton.addEventListener('click', checkForInputs);
 startTimer.addEventListener('click', function() {currentActivity.countdown()});
-
+logActivityButton.addEventListener('click', logActivity)
 
 
 function toggleStudyButtonColor() {
@@ -202,10 +206,52 @@ function decrement() {
   }
 }
 
-function displayComplete () {
+function displayComplete() {
   startTimer.innerText = "COMPLETE!"
 }
 
-function timerAtZero () {
+function timerAtZero() {
   timerCountdown.innerText = "00:00"
+}
+
+function logActivity() {
+  hidePastActivityMessages(); 
+  saveActivities();
+}
+
+//goal: log our last instance of the data model as a past activity card
+// event listener on log activity button
+// hide past activity message, show cards
+// push current activity to array
+// invoke function which iterates through array and displays all elements as cards
+/////// for loop, for each i, += innerHTML 
+
+function hidePastActivityMessages () {
+  haventLoggedMessage.classList.add('hidden')
+  completeFormMessage.classList.add('hidden')
+  pastActivityCard.classList.remove('hidden')
+}
+
+var loggedActivities = [] 
+
+function saveActivities() {
+  loggedActivities.push(currentActivity)
+  displayLoggedActivities();
+}
+
+var cardsHolder = document.querySelector('.past-activities-cards-holder')
+
+function displayLoggedActivities() {
+  cardsHolder.innerHTML = ``
+  for (var i = 0; i < loggedActivities.length; i++) {
+    cardsHolder.innerHTML += `
+    <section class="past-activities-card" id="${loggedActivities[i].id}">
+    <section class="card-words-holder" id="card-words-holder">
+      <p class="past-activity-title" id="past-activity-title">${loggedActivities[i].category}</p>
+      <h2 class="past-activity-time" id="past-activity-time">${loggedActivities[i].minutes} MIN ${loggedActivities[i].seconds} SECONDS</h2>
+      <h3 class="past-activity-desciption" id="past-activity-description">${loggedActivities[i].description}</h3>
+    </section>
+    <hr></hr>
+  </section>`
+  }
 }
