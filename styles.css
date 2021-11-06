@@ -360,6 +360,10 @@ aside {
   overflow-y: auto;
 }
 
+.left-buttons-border {
+  border: 2px solid #EFB7EC;
+}
+
 .hidden {
   display: none;
 }

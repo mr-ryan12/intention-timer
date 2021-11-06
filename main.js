@@ -7,6 +7,7 @@ var errorMessage = document.querySelector('.error-message');
 var startTimer = document.querySelector('.start-timer');
 var logActivityButton = document.querySelector('.log-activity');
 var createNewActivityButton = document.querySelector('.create-new-activity')
+var leftButtons = document.querySelector('.left-buttons');
 
 
 //inputs
@@ -37,7 +38,7 @@ var interval;
 var loggedActivities = []
 var activitiesArray;
 
-
+window.addEventListener('load', displayOnLoad)
 window.addEventListener('load', preventMinutesE);
 window.addEventListener('load', preventSecondsE);
 studyButton.addEventListener('click', toggleStudyButtonColor);
@@ -45,7 +46,6 @@ meditateButton.addEventListener('click', toggleMeditateButtonColor);
 exerciseButton.addEventListener('click', toggleExerciseButtonColor);
 startActivityButton.addEventListener('click', checkForInputs);
 startTimer.addEventListener('click', function() {currentActivity.countdown()});
-// logActivityButton.addEventListener('click', function() {currentActivity.markComplete()})
 createNewActivityButton.addEventListener('click', returnHome)
 logActivityButton.addEventListener('click', storeCurrentActivity)
 
@@ -102,13 +102,19 @@ function checkForInputs(event) {
     minutesError();
     secondsError();
     accomplishError();
-    // checkButtonClick();
+    buttonsError();
   } else {
     createDataModel();
     assignTimer();
     toggleTimerView();
   }
 }
+
+function buttonsError() {
+  if (!(meditateButton.classList.contains('meditate-button-active')) && !(studyButton.classList.contains('study-button-active')) && !(exerciseButton.classList.contains('exercise-button-active'))) {
+      leftButtons.classList.add('left-buttons-border');
+    }
+  }
 
 function minutesError() {
   if (minutesInput.value === '') {
@@ -235,14 +241,11 @@ function logActivity() {
   saveActivities();
 }
 
-
-
 function hidePastActivityMessages () {
   haventLoggedMessage.classList.add('hidden')
   completeFormMessage.classList.add('hidden')
   pastActivityCard.classList.remove('hidden')
 }
-
 
 function saveActivities() {
   loggedActivities.push(currentActivity)
@@ -269,8 +272,6 @@ function returnHome() {
   location.reload();
 }
 
-
-
 function hide(element) {
   element.classList.add('hidden')
 }
@@ -280,9 +281,6 @@ function show(element) {
 }
 
 //////BUILDING THE LOCAL STORAGE
-
-
-
 function storeCurrentActivity() {
   if (localStorage.getItem('activitiesArray')) {
     loggedActivities = JSON.parse(localStorage.getItem('activitiesArray'));
@@ -300,8 +298,6 @@ function storeCurrentActivity() {
     localStorage.setItem('activitiesArray', activitiesArray)
   }
 }
-
-window.addEventListener('load', displayOnLoad)
 
 function displayOnLoad() {
   if (localStorage.getItem('activitiesArray')) {
