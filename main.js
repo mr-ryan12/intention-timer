@@ -206,22 +206,46 @@ function decrement() {
   }
 }
 
-function displayComplete () {
+function displayComplete() {
   startTimer.innerText = "COMPLETE!"
 }
 
-function timerAtZero () {
+function timerAtZero() {
   timerCountdown.innerText = "00:00"
 }
 
 function logActivity() {
   hidePastActivityMessages(); 
-
+  saveActivities();
 }
 
+//goal: log our last instance of the data model as a past activity card
+// event listener on log activity button
+// hide past activity message, show cards
+// push current activity to array
+// invoke function which iterates through array and displays all elements as cards
+/////// for loop, for each i, += innerHTML 
 
 function hidePastActivityMessages () {
   haventLoggedMessage.classList.add('hidden')
   completeFormMessage.classList.add('hidden')
   pastActivityCard.classList.remove('hidden')
+}
+
+var loggedActivities = [] 
+
+function saveActivities() {
+  loggedActivities.push(currentActivity)
+  displayLoggedActivities();
+}
+
+var cardWordsHolder = document.querySelector('.card-words-holder')
+
+function displayLoggedActivities() {
+  cardWordsHolder.innerHTML = ``
+  for (var i = 0; i < loggedActivities.length; i++) {
+    cardWordsHolder.innerHTML = `<p class="past-activity-title" id="past-activity-title">${loggedActivities[i].category}</p>
+    <h2 class="past-activity-time" id="past-activity-time">${loggedActivities[i].minutes} MIN ${loggedActivities[i].seconds} SECONDS</h2>
+    <h3 class="past-activity-desciption" id="past-activity-description">${loggedActivities[i].description}</h3>`
+  }
 }
