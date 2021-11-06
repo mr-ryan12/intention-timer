@@ -211,6 +211,7 @@ function decrement() {
     displaySeconds = totalSeconds % 60;
     ensureDoubleZeros()
     if (totalSeconds === 0) {
+      show(logActivityButton)
       clearInterval(interval);
       displayComplete();
       timerAtZero();
