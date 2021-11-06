@@ -52,6 +52,8 @@ main {
   justify-content: space-around;
   padding: 2px 65px;
   align-items: center;
+  border-radius: 10px;
+  filter: drop-shadow(3px 3px #26222D);
 }
 
 .start-timer {
