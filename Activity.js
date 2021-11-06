@@ -11,6 +11,9 @@ class Activity {
     interval = setInterval(decrement, 1000);
   };
 
-  markComplete() {};
+  markComplete() {
+    logActivity()
+
+  };
   saveToStorage() {};
 }

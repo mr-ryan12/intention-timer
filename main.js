@@ -32,6 +32,10 @@ var displayMinutes;
 var displaySeconds;
 var interval;
 
+var cardsHolder = document.querySelector('.past-activities-cards-holder')
+var loggedActivities = []
+
+
 
 window.addEventListener('load', preventMinutesE);
 window.addEventListener('load', preventSecondsE);
@@ -40,7 +44,7 @@ meditateButton.addEventListener('click', toggleMeditateButtonColor);
 exerciseButton.addEventListener('click', toggleExerciseButtonColor);
 startActivityButton.addEventListener('click', checkForInputs);
 startTimer.addEventListener('click', function() {currentActivity.countdown()});
-logActivityButton.addEventListener('click', logActivity)
+logActivityButton.addEventListener('click', function() {currentActivity.markComplete()})
 createNewActivityButton.addEventListener('click', returnHome)
 
 function toggleStudyButtonColor() {
@@ -221,6 +225,13 @@ function logActivity() {
   saveActivities();
 }
 
+// function logActivity() {
+//   storeCurrentActivity();
+//   displayLocalStorage();
+//   hidePastActivityMessages();
+//   saveActivities();
+// }
+
 //goal: log our last instance of the data model as a past activity card
 // event listener on log activity button
 // hide past activity message, show cards
@@ -234,14 +245,13 @@ function hidePastActivityMessages () {
   pastActivityCard.classList.remove('hidden')
 }
 
-var loggedActivities = []
 
 function saveActivities() {
   loggedActivities.push(currentActivity)
   displayLoggedActivities();
 }
 
-var cardsHolder = document.querySelector('.past-activities-cards-holder')
+
 
 function displayLoggedActivities() {
   var color;
@@ -270,13 +280,17 @@ function displayLoggedActivities() {
 
 
 function hideTimer() {
-  activityDescription.classList.add('hidden');
-  timerCountdown.classList.add('hidden');
-  startTimer.classList.add('hidden');
-  logActivityButton.classList.add('hidden');
-  createNewActivityButton.classList.remove('hidden')
-  cardsHolder.classList.remove('hidden')
-  activityStatus.innerText = "Completed Activity"
+  hide(activityDescription)
+  hide(timerCountdown)
+  hide(startTimer)
+  hide(logActivityButton)
+  show(createNewActivityButton)
+  show(cardsHolder)
+  updateActivityStatus("Completed Activity")
+}
+
+function updateActivityStatus(newStatus) {
+  activityStatus.innerText = newStatus
 }
 
 function returnHome() {
@@ -294,3 +308,30 @@ function hide(element) {
 function show(element) {
   element.classList.remove('hidden')
 }
+
+var stringifiedActivities = JSON.stringify(loggedActivities[0])
+
+function storeCurrentActivity() {
+  localStorage.setItem('activityToDisplay', stringifiedActivities)
+}
+
+function displayLocalStorage() {
+  var retrievedActivities = localStorage.getItem('activityToDisplay')
+  var parsedRetrievedActivity = JSON.parse(retrievedActivities)
+
+}
+// save currentActivity in local saveToStorage
+// create function that adds current activity to local storage
+// JSON.stringify currentActivity
+// localStorage.setItem (lo, stringified currentActivity)
+
+
+
+
+// create function to display cards
+// for (i = 0; i <localStorage.length; i++)
+// for each item, localStorage.getItem(currentActivity.id)
+//
+
+// create function that displays local storage
+//
