@@ -343,6 +343,10 @@ hr {
   margin-left:15px
 }
 
+aside {
+  overflow-y: auto; 
+}
+
 .hidden {
   display: none;
 }
