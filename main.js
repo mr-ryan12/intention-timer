@@ -7,6 +7,7 @@ var errorMessage = document.querySelector('.error-message');
 var startTimer = document.querySelector('.start-timer');
 var logActivityButton = document.querySelector('.log-activity');
 var createNewActivityButton = document.querySelector('.create-new-activity')
+var leftButtons = document.querySelector('.left-buttons');
 
 
 //inputs
@@ -37,7 +38,7 @@ var interval;
 var loggedActivities = []
 var activitiesArray;
 
-
+window.addEventListener('load', displayOnLoad)
 window.addEventListener('load', preventMinutesE);
 window.addEventListener('load', preventSecondsE);
 studyButton.addEventListener('click', toggleStudyButtonColor);
@@ -45,8 +46,8 @@ meditateButton.addEventListener('click', toggleMeditateButtonColor);
 exerciseButton.addEventListener('click', toggleExerciseButtonColor);
 startActivityButton.addEventListener('click', checkForInputs);
 startTimer.addEventListener('click', function() {currentActivity.countdown()});
-// logActivityButton.addEventListener('click', function() {currentActivity.markComplete()})
 createNewActivityButton.addEventListener('click', returnHome)
+logActivityButton.addEventListener('click', storeCurrentActivity)
 
 function toggleStudyButtonColor() {
   addStudyButtonColor();
@@ -101,13 +102,19 @@ function checkForInputs(event) {
     minutesError();
     secondsError();
     accomplishError();
-    // checkButtonClick();
+    buttonsError();
   } else {
     createDataModel();
     assignTimer();
     toggleTimerView();
   }
 }
+
+function buttonsError() {
+  if (!(meditateButton.classList.contains('meditate-button-active')) && !(studyButton.classList.contains('study-button-active')) && !(exerciseButton.classList.contains('exercise-button-active'))) {
+      leftButtons.classList.add('left-buttons-border');
+    }
+  }
 
 function minutesError() {
   if (minutesInput.value === '') {
@@ -204,6 +211,7 @@ function decrement() {
     displaySeconds = totalSeconds % 60;
     ensureDoubleZeros()
     if (totalSeconds === 0) {
+      show(logActivityButton)
       clearInterval(interval);
       displayComplete();
       timerAtZero();
@@ -234,47 +242,16 @@ function logActivity() {
   saveActivities();
 }
 
-
-
 function hidePastActivityMessages () {
   haventLoggedMessage.classList.add('hidden')
   completeFormMessage.classList.add('hidden')
   pastActivityCard.classList.remove('hidden')
 }
 
-
 function saveActivities() {
   loggedActivities.push(currentActivity)
   displayLoggedActivities();
 }
-
-
-
-// function displayLoggedActivities() {
-//   var color;
-//
-//   cardsHolder.innerHTML = ``
-//   for (var i = 0; i < loggedActivities.length; i++) {
-//     if (loggedActivities[i].category === 'Meditate') {
-//       color = "#C278FD";
-//     } else if (loggedActivities[i].category === 'Study') {
-//       color = "#B3FD78";
-//     } else if (loggedActivities[i].category === 'Exercise') {
-//       color = "#FD8078";
-//     }
-//     cardsHolder.innerHTML += `
-//     <section class="past-activities-card" id="${loggedActivities[i].id}">
-//     <section class="card-words-holder" id="card-words-holder">
-//       <p class="past-activity-title" id="past-activity-title">${loggedActivities[i].category}</p>
-//       <h2 class="past-activity-time" id="past-activity-time">${loggedActivities[i].minutes} MIN ${loggedActivities[i].seconds} SECONDS</h2>
-//       <h3 class="past-activity-desciption" id="past-activity-description">${loggedActivities[i].description}</h3>
-//     </section>
-//     <hr style="color:${color}"></hr>
-//   </section>`
-//   }
-//   hideTimer();
-// }
-
 
 function hideTimer() {
   hide(activityDescription)
@@ -283,6 +260,8 @@ function hideTimer() {
   hide(logActivityButton)
   show(createNewActivityButton)
   show(cardsHolder)
+  hide(haventLoggedMessage)
+  hide(completeFormMessage)
   updateActivityStatus("Completed Activity")
 }
 
@@ -292,12 +271,7 @@ function updateActivityStatus(newStatus) {
 
 function returnHome() {
   location.reload();
-  // show(leftSubContainer);
-  // hide(timerView);
-  // activityStatus.innerText = "New Activity"
 }
-
-
 
 function hide(element) {
   element.classList.add('hidden')
@@ -308,11 +282,6 @@ function show(element) {
 }
 
 //////BUILDING THE LOCAL STORAGE
-
-
-
-logActivityButton.addEventListener('click', storeCurrentActivity)
-
 function storeCurrentActivity() {
   if (localStorage.getItem('activitiesArray')) {
     loggedActivities = JSON.parse(localStorage.getItem('activitiesArray'));
@@ -331,8 +300,6 @@ function storeCurrentActivity() {
   }
 }
 
-window.addEventListener('load', displayOnLoad)
-
 function displayOnLoad() {
   if (localStorage.getItem('activitiesArray')) {
     hide(haventLoggedMessage)
@@ -341,8 +308,6 @@ function displayOnLoad() {
     displayLoggedActivities()
   }
 }
-
-
 
 function displayLoggedActivities() {
   var color;
