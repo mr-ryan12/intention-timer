@@ -266,10 +266,14 @@ function displayLoggedActivities() {
   hideTimer();
 }
 
+var createNewActivityButton = document.querySelector('.create-new-activity')
+
 function hideTimer() {
   activityDescription.classList.add('hidden');
   timerCountdown.classList.add('hidden');
   startTimer.classList.add('hidden');
   logActivityButton.classList.add('hidden');
+  createNewActivityButton.classList.remove('hidden')
+
   cardsHolder.classList.remove('hidden')
 }
