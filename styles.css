@@ -104,6 +104,8 @@ main {
 .right-container {
   width: 50%;
   border-left: 3px solid #46424D;
+  display: flex;
+  flex-direction: column;
 }
 
 .right-container > p {
@@ -318,8 +320,9 @@ main {
   display: flex;
   justify-content: space-between;
   border-radius: 10px;
-  height:18%;
+  height: 135px;
   filter: drop-shadow(3px 3px #26222D);
+  margin-bottom: 10px;
 }
 
 #past-activity-title {

@@ -239,16 +239,19 @@ function saveActivities() {
   displayLoggedActivities();
 }
 
-var cardWordsHolder = document.querySelector('.card-words-holder')
+var cardsHolder = document.querySelector('.past-activities-cards-holder')
 
 function displayLoggedActivities() {
-  cardWordsHolder.innerHTML = ``
+  cardsHolder.innerHTML = ``
   for (var i = 0; i < loggedActivities.length; i++) {
-    cardWordsHolder.innerHTML += `<section class="card-words-holder" id="card-words-holder"> <p class="past-activity-title" id="past-activity-title">${loggedActivities[i].category}</p>
-    <h2 class="past-activity-time" id="past-activity-time">${loggedActivities[i].minutes} MIN ${loggedActivities[i].seconds} SECONDS</h2>
-    <h3 class="past-activity-desciption" id="past-activity-description">${loggedActivities[i].description}</h3>
+    cardsHolder.innerHTML += `
+    <section class="past-activities-card" id="${loggedActivities[i].id}">
+    <section class="card-words-holder" id="card-words-holder">
+      <p class="past-activity-title" id="past-activity-title">${loggedActivities[i].category}</p>
+      <h2 class="past-activity-time" id="past-activity-time">${loggedActivities[i].minutes} MIN ${loggedActivities[i].seconds} SECONDS</h2>
+      <h3 class="past-activity-desciption" id="past-activity-description">${loggedActivities[i].description}</h3>
     </section>
-        <hr></hr>
-      </section>`
+    <hr></hr>
+  </section>`
   }
 }
