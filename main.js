@@ -44,7 +44,7 @@ meditateButton.addEventListener('click', toggleMeditateButtonColor);
 exerciseButton.addEventListener('click', toggleExerciseButtonColor);
 startActivityButton.addEventListener('click', checkForInputs);
 startTimer.addEventListener('click', function() {currentActivity.countdown()});
-logActivityButton.addEventListener('click', function() {currentActivity.markComplete()})
+// logActivityButton.addEventListener('click', function() {currentActivity.markComplete()})
 createNewActivityButton.addEventListener('click', returnHome)
 
 function toggleStudyButtonColor() {
@@ -220,10 +220,11 @@ function timerAtZero() {
   timerCountdown.innerText = "00:00"
 }
 
-function logActivity() {
-  hidePastActivityMessages();
-  saveActivities();
-}
+///this is the existing and functioning logActivity function!
+// function logActivity() {
+//   hidePastActivityMessages();
+//   saveActivities();
+// }
 
 // function logActivity() {
 //   storeCurrentActivity();
@@ -253,30 +254,30 @@ function saveActivities() {
 
 
 
-function displayLoggedActivities() {
-  var color;
-
-  cardsHolder.innerHTML = ``
-  for (var i = 0; i < loggedActivities.length; i++) {
-    if (loggedActivities[i].category === 'Meditate') {
-      color = "#C278FD";
-    } else if (loggedActivities[i].category === 'Study') {
-      color = "#B3FD78";
-    } else if (loggedActivities[i].category === 'Exercise') {
-      color = "#FD8078";
-    }
-    cardsHolder.innerHTML += `
-    <section class="past-activities-card" id="${loggedActivities[i].id}">
-    <section class="card-words-holder" id="card-words-holder">
-      <p class="past-activity-title" id="past-activity-title">${loggedActivities[i].category}</p>
-      <h2 class="past-activity-time" id="past-activity-time">${loggedActivities[i].minutes} MIN ${loggedActivities[i].seconds} SECONDS</h2>
-      <h3 class="past-activity-desciption" id="past-activity-description">${loggedActivities[i].description}</h3>
-    </section>
-    <hr style="color:${color}"></hr>
-  </section>`
-  }
-  hideTimer();
-}
+// function displayLoggedActivities() {
+//   var color;
+//
+//   cardsHolder.innerHTML = ``
+//   for (var i = 0; i < loggedActivities.length; i++) {
+//     if (loggedActivities[i].category === 'Meditate') {
+//       color = "#C278FD";
+//     } else if (loggedActivities[i].category === 'Study') {
+//       color = "#B3FD78";
+//     } else if (loggedActivities[i].category === 'Exercise') {
+//       color = "#FD8078";
+//     }
+//     cardsHolder.innerHTML += `
+//     <section class="past-activities-card" id="${loggedActivities[i].id}">
+//     <section class="card-words-holder" id="card-words-holder">
+//       <p class="past-activity-title" id="past-activity-title">${loggedActivities[i].category}</p>
+//       <h2 class="past-activity-time" id="past-activity-time">${loggedActivities[i].minutes} MIN ${loggedActivities[i].seconds} SECONDS</h2>
+//       <h3 class="past-activity-desciption" id="past-activity-description">${loggedActivities[i].description}</h3>
+//     </section>
+//     <hr style="color:${color}"></hr>
+//   </section>`
+//   }
+//   hideTimer();
+// }
 
 
 function hideTimer() {
@@ -294,9 +295,10 @@ function updateActivityStatus(newStatus) {
 }
 
 function returnHome() {
-  show(leftSubContainer);
-  hide(timerView);
-  activityStatus.innerText = "New Activity"
+  location.reload();
+  // show(leftSubContainer);
+  // hide(timerView);
+  // activityStatus.innerText = "New Activity"
 }
 
 
@@ -309,17 +311,55 @@ function show(element) {
   element.classList.remove('hidden')
 }
 
-var stringifiedActivities = JSON.stringify(loggedActivities[0])
+//////BUILDING THE LOCAL STORAGE
+var stringifiedActivities;
+var activitiesArray;
+var parsedActivities = [];
+
+logActivityButton.addEventListener('click', storeCurrentActivity)
 
 function storeCurrentActivity() {
-  localStorage.setItem('activityToDisplay', stringifiedActivities)
+  if (localStorage.getItem('activitiesArray')) {
+    parsedActivities = JSON.parse(localStorage.getItem('activitiesArray'));
+    parsedActivities.push(currentActivity);
+    displayLoggedActivities();
+    activitiesArray = JSON.stringify(parsedActivities)
+    localStorage.removeItem('activitiesArray');
+    localStorage.setItem('activitiesArray', activitiesArray)
+  } else {
+    parsedActivities.push(currentActivity)
+    displayLoggedActivities();
+    activitiesArray = JSON.stringify(parsedActivities)
+    localStorage.setItem('activitiesArray', activitiesArray)
+  }
 }
 
-function displayLocalStorage() {
-  var retrievedActivities = localStorage.getItem('activityToDisplay')
-  var parsedRetrievedActivity = JSON.parse(retrievedActivities)
+function displayLoggedActivities() {
+  var color;
 
+  cardsHolder.innerHTML = ``
+  for (var i = 0; i < parsedActivities.length; i++) {
+    if (parsedActivities[i].category === 'Meditate') {
+      color = "#C278FD";
+    } else if (parsedActivities[i].category === 'Study') {
+      color = "#B3FD78";
+    } else if (parsedActivities[i].category === 'Exercise') {
+      color = "#FD8078";
+    }
+    cardsHolder.innerHTML += `
+    <section class="past-activities-card" id="${parsedActivities[i].id}">
+    <section class="card-words-holder" id="card-words-holder">
+      <p class="past-activity-title" id="past-activity-title">${parsedActivities[i].category}</p>
+      <h2 class="past-activity-time" id="past-activity-time">${parsedActivities[i].minutes} MIN ${parsedActivities[i].seconds} SECONDS</h2>
+      <h3 class="past-activity-desciption" id="past-activity-description">${parsedActivities[i].description}</h3>
+    </section>
+    <hr style="color:${color}"></hr>
+  </section>`
+  }
+  hideTimer();
 }
+
+
 // save currentActivity in local saveToStorage
 // create function that adds current activity to local storage
 // JSON.stringify currentActivity
