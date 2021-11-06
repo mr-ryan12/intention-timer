@@ -283,6 +283,8 @@ function hideTimer() {
   hide(logActivityButton)
   show(createNewActivityButton)
   show(cardsHolder)
+  hide(haventLoggedMessage)
+  hide(completeFormMessage)
   updateActivityStatus("Completed Activity")
 }
 
