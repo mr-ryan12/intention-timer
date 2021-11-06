@@ -318,20 +318,34 @@ function storeCurrentActivity() {
     loggedActivities = JSON.parse(localStorage.getItem('activitiesArray'));
     loggedActivities.unshift(currentActivity);
     displayLoggedActivities();
+    hideTimer();
     activitiesArray = JSON.stringify(loggedActivities)
     localStorage.removeItem('activitiesArray');
     localStorage.setItem('activitiesArray', activitiesArray)
   } else {
     loggedActivities.unshift(currentActivity)
     displayLoggedActivities();
+    hideTimer();
     activitiesArray = JSON.stringify(loggedActivities)
     localStorage.setItem('activitiesArray', activitiesArray)
   }
 }
 
+window.addEventListener('load', displayOnLoad)
+
+function displayOnLoad() {
+  if (localStorage.getItem('activitiesArray')) {
+    hide(haventLoggedMessage)
+    hide(completeFormMessage)
+    loggedActivities = JSON.parse(localStorage.getItem('activitiesArray'));
+    displayLoggedActivities()
+  }
+}
+
+
+
 function displayLoggedActivities() {
   var color;
-
   cardsHolder.innerHTML = ``
   for (var i = 0; i < loggedActivities.length; i++) {
     if (loggedActivities[i].category === 'Meditate') {
@@ -351,5 +365,4 @@ function displayLoggedActivities() {
     <hr style="color:${color}"></hr>
   </section>`
   }
-  hideTimer();
 }
