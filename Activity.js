@@ -13,7 +13,15 @@ class Activity {
 
   markComplete() {
     logActivity()
+    //Change timer to complete
+    //show log activity button
+
 
   };
-  saveToStorage() {};
+  saveToStorage() {
+    //save to STORAGE
+    //completed activity title
+    //create new activity button appear
+    //
+  };
 }
