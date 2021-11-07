@@ -12,42 +12,42 @@
   <header class="header">INTENTION TIMER</header>
   <main>
     <section class="container left-container">
-      <h1 class="new-activity">New Activity</h1>
-      <section class="view timer-sub-container hidden">
+      <h1 class="new-activity" id="new-activity">New Activity</h1>
+      <section class="view timer-sub-container hidden" id="timer-sub-container">
         <section class="timer-text-container">
-          <h1 class="activity-description">empty string</h1>
-          <h1 class="timer-countdown">00:00</h1>
+          <h1 class="activity-description" id="activity-description">empty string</h1>
+          <h1 class="timer-countdown" id="timer-countdown">00:00</h1>
         </section>
-        <button class="start-timer">START</button>
-        <button class="log-activity hidden">LOG ACTIVITY</button>
-        <button class="create-new-activity hidden">CREATE A NEW ACTIVITY</button>
+        <button class="start-timer" id="start-timer">START</button>
+        <button class="log-activity hidden" id="log-activity">LOG ACTIVITY</button>
+        <button class="create-new-activity hidden" id="create-new-activity">CREATE A NEW ACTIVITY</button>
       </section>
-      <section class="view left-sub-container">
+      <section class="view left-sub-container" id="left-sub-container">
         <h3 class="select-a-category">Select a category:</h3>
-        <section class="left-buttons">
-          <button class="study-button">Study</button>
-          <button class="meditate-button">Meditate</button>
-          <button class="exercise-button">Exercise</button>
+        <section class="left-buttons" id="left-buttons">
+          <button class="study-button" id="study-button">Study</button>
+          <button class="meditate-button" id="meditate-button">Meditate</button>
+          <button class="exercise-button" id="exercise-button">Exercise</button>
         </section>
         <form class="left-inputs">
           <label class="accomplish" for="accomplish-input">What would you like to accomplish during this time?</label>
           <input class="accomplish-input" type="text" id="accomplish-input" />
-          <h3 class="error-message hidden"><img class="warning-label" src="./assets/warning.svg"/> A description is required.</h3>
+          <h3 class="error-message hidden" id="error-message"><img class="warning-label" src="./assets/warning.svg"/> A description is required.</h3>
           <br />
           <label class="minutes-time" for="minutes-input">Minutes</label>
           <input class="minutes-input" type="number" min="0" id="minutes-input" />
           <label class="seconds-time" for="seconds-input">Seconds</label>
           <input class="seconds-input" type="number" min="0" id="seconds-input" />
           <br />
-          <button class="start-button">START ACTIVITY</button>
+          <button class="start-button" id="start-button">START ACTIVITY</button>
         </form>
       </section>
     </section>
     <aside class="container right-container">
       <h1 class="past-activites">Past Activities</h1>
-      <section class="past-activities-cards-holder"></section>
-      <p class="havent-logged">You haven't logged any activities yet.</p>
-      <p class="complete-form">Complete the form to the left to get started!</p>
+      <section class="past-activities-cards-holder" id="past-activities-cards-holder"></section>
+      <p class="havent-logged" id="havent-logged">You haven't logged any activities yet.</p>
+      <p class="complete-form" id="complete-form">Complete the form to the left to get started!</p>
     </aside>
   </main>
   <script type="text/javascript" src="Activity.js"></script>
