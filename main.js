@@ -1,8 +1,8 @@
 // Variables targeting HTML button elements
-var startTimer = document.querySelector('#start-timer');
 var studyButton = document.querySelector('#study-button');
 var leftButtons = document.querySelector('#left-buttons');
 var errorMessage = document.querySelector('#error-message');
+var startTimerButton = document.querySelector('#start-timer');
 var logActivityButton = document.querySelector('#log-activity');
 var meditateButton = document.querySelector('#meditate-button');
 var exerciseButton = document.querySelector('#exercise-button');
@@ -36,15 +36,23 @@ var loggedActivities = [];
 
 // Event listeners
 window.addEventListener('load', displayOnLoad);
-window.addEventListener('load', preventMinutesE);
-window.addEventListener('load', preventSecondsE);
+window.addEventListener('load', preventE(minutesInput));
+window.addEventListener('load', preventE(secondsInput));
 studyButton.addEventListener('click', toggleStudyButtonColor);
 startActivityButton.addEventListener('click', checkForInputs);
 createNewActivityButton.addEventListener('click', returnHome);
 logActivityButton.addEventListener('click', storeCurrentActivity);
 meditateButton.addEventListener('click', toggleMeditateButtonColor);
 exerciseButton.addEventListener('click', toggleExerciseButtonColor);
-startTimer.addEventListener('click', function() {currentActivity.countdown()});
+startTimerButton.addEventListener('click', startTimer);
+
+function storeCurrentActivity() {
+  currentActivity.saveToStorage();
+}
+
+function startTimer() {
+  currentActivity.countdown();
+}
 
 function toggleStudyButtonColor() {
   addStudyButtonColor();
@@ -88,10 +96,6 @@ function removeExerciseButtonColor() {
   exerciseButton.classList.remove('exercise-button-active');
 }
 
-function displayErrorMessage() {
-  errorMessage.classList.remove('hidden');
-}
-
 function checkForInputs(event) {
   event.preventDefault();
   assignCategory();
@@ -112,15 +116,15 @@ function buttonsError() {
       !(studyButton.classList.contains('study-button-active')) &&
       !(exerciseButton.classList.contains('exercise-button-active'))) {
       
-      displayErrorMessage();
+      show(errorMessage);
       leftButtons.classList.add('left-buttons-border');
     }
   }
 
 function error(input) {
   if (input.value === '') {
-  displayErrorMessage();
-  input.classList.add('error-bottom-border');
+    show(errorMessage);
+    input.classList.add('error-bottom-border');
   }
 }
 
@@ -131,17 +135,8 @@ function toggleTimerView() {
   activityStatus.innerText = 'Current Activity';
 }
 
-function preventMinutesE() {
-  minutesInput.addEventListener("keydown", function(e) {
-    var invalidChars = 'e';
-    if (invalidChars.includes(e.key)) {
-      e.preventDefault();
-    }
-  });
-}
-
-function preventSecondsE() {
-  secondsInput.addEventListener("keydown", function(e) {
+function preventE(element) {
+  element.addEventListener("keydown", function(e) {
     var invalidChars = 'e';
     if (invalidChars.includes(e.key)) {
       e.preventDefault();
@@ -174,11 +169,11 @@ function assignTimer() {
 
 function displayTimerColor() {
   if (categorySelection === 'Study') {
-    startTimer.classList.add('start-timer-study');
+    startTimerButton.classList.add('start-timer-study');
   } else if (categorySelection === 'Meditate') {
-    startTimer.classList.add('start-timer-meditate');
+    startTimerButton.classList.add('start-timer-meditate');
   } else if (categorySelection === 'Exercise') {
-    startTimer.classList.add('start-timer-exercise');
+    startTimerButton.classList.add('start-timer-exercise');
   }
 }
 
@@ -197,51 +192,34 @@ function decrement() {
     displayMinutes = Math.floor(totalSeconds / 60);
     displaySeconds = totalSeconds % 60;
     ensureDoubleZeros();
-    if (totalSeconds === 0) {
-      show(logActivityButton);
-      clearInterval(interval);
-      displayComplete();
-      timerAtZero();
-    } else {
-      timerCountdown.innerText = `${displayMinutes}:${displaySeconds}`;
-    }
+    displayAtZeroSeconds()
+  }
+}
+
+function displayAtZeroSeconds() {
+  if (totalSeconds === 0) {
+    show(logActivityButton);
+    clearInterval(interval);
+    displayComplete();
+    timerAtZero();
+    currentActivity.markComplete();
+  } else {
+    timerCountdown.innerText = `${displayMinutes}:${displaySeconds}`;
   }
 }
 
 function displayComplete() {
-  startTimer.innerText = "COMPLETE!";
+  startTimerButton.innerText = "COMPLETE!";
 }
 
 function timerAtZero() {
   timerCountdown.innerText = "00:00";
 }
 
-function logActivity() {
-  hidePastActivityMessages();
-  saveActivities();
-}
-
-function logActivity() {
-  storeCurrentActivity();
-  displayLocalStorage();
-  hidePastActivityMessages();
-  saveActivities();
-}
-
-function hidePastActivityMessages () {
-  haventLoggedMessage.classList.add('hidden');
-  completeFormMessage.classList.add('hidden');
-}
-
-function saveActivities() {
-  loggedActivities.push(currentActivity);
-  displayLoggedActivities();
-}
-
 function hideTimer() {
   hide(activityDescription);
   hide(timerCountdown);
-  hide(startTimer);
+  hide(startTimerButton);
   hide(logActivityButton);
   show(createNewActivityButton);
   show(cardsHolder);
@@ -266,23 +244,23 @@ function show(element) {
   element.classList.remove('hidden');
 }
 
-function storeCurrentActivity() {
-  if (localStorage.getItem('activitiesArray')) {
-    loggedActivities = JSON.parse(localStorage.getItem('activitiesArray'));
-    loggedActivities.unshift(currentActivity);
-    displayLoggedActivities();
-    hideTimer();
-    activitiesArray = JSON.stringify(loggedActivities);
-    localStorage.removeItem('activitiesArray');
-    localStorage.setItem('activitiesArray', activitiesArray);
-  } else {
-    loggedActivities.unshift(currentActivity);
-    displayLoggedActivities();
-    hideTimer();
-    activitiesArray = JSON.stringify(loggedActivities);
-    localStorage.setItem('activitiesArray', activitiesArray);
-  }
-}
+// function storeCurrentActivity() {
+//   if (localStorage.getItem('activitiesArray')) {
+//     loggedActivities = JSON.parse(localStorage.getItem('activitiesArray'));
+//     loggedActivities.unshift(currentActivity);
+//     displayLoggedActivities();
+//     hideTimer();
+//     activitiesArray = JSON.stringify(loggedActivities);
+//     localStorage.removeItem('activitiesArray');
+//     localStorage.setItem('activitiesArray', activitiesArray);
+//   } else {
+//     loggedActivities.unshift(currentActivity);
+//     displayLoggedActivities();
+//     hideTimer();
+//     activitiesArray = JSON.stringify(loggedActivities);
+//     localStorage.setItem('activitiesArray', activitiesArray);
+//   }
+// }
 
 function displayOnLoad() {
   if (localStorage.getItem('activitiesArray')) {
@@ -308,12 +286,12 @@ function displayLoggedActivities() {
 
     cardsHolder.innerHTML += `
     <section class="past-activities-card" id="${loggedActivities[i].id}">
-    <section class="card-words-holder" id="card-words-holder">
-      <p class="past-activity-title" id="past-activity-title">${loggedActivities[i].category}</p>
-      <h2 class="past-activity-time" id="past-activity-time">${loggedActivities[i].minutes} MIN ${loggedActivities[i].seconds} SECONDS</h2>
-      <h3 class="past-activity-desciption" id="past-activity-description">${loggedActivities[i].description}</h3>
-    </section>
-    <hr style="color:${color}"></hr>
-  </section>`
+      <section class="card-words-holder" id="card-words-holder">
+        <p class="past-activity-title" id="past-activity-title">${loggedActivities[i].category}</p>
+        <h2 class="past-activity-time" id="past-activity-time">${loggedActivities[i].minutes} MIN ${loggedActivities[i].seconds} SECONDS</h2>
+        <h3 class="past-activity-desciption" id="past-activity-description">${loggedActivities[i].description}</h3>
+      </section>
+      <hr style="color:${color}"></hr>
+    </section>`
   }
 }
