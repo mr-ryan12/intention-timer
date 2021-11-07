@@ -21,10 +21,10 @@ This application assists users with setting goals for their health and productiv
    
 ## Screenshots  
 Users can customize their own activity  
-![intro](https://user-images.githubusercontent.com/62816754/140630201-4e0521c9-39ab-4630-98e6-f13324dec6f2.gif)
+![intro](https://user-images.githubusercontent.com/62816754/140630201-4e0521c9-39ab-4630-98e6-f13324dec6f2.gif)  
 
    
-The timer begins counting down when the user clicks the 'Start' button 
+The timer begins counting down when the user clicks the 'Start' button   
 ![timer-countdown](https://user-images.githubusercontent.com/62816754/140630210-f509a779-5d47-4711-8a34-66af2e9bfef2.gif)
   
 The user is able to view a list of completed activites  
