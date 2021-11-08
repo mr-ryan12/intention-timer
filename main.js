@@ -1,28 +1,28 @@
 // Variables targeting HTML button elements
-var studyButton = document.querySelector('#study-button');
-var leftButtons = document.querySelector('#left-buttons');
-var errorMessage = document.querySelector('#error-message');
-var startTimerButton = document.querySelector('#start-timer');
-var logActivityButton = document.querySelector('#log-activity');
-var meditateButton = document.querySelector('#meditate-button');
-var exerciseButton = document.querySelector('#exercise-button');
-var startActivityButton = document.querySelector('#start-button');
-var createNewActivityButton = document.querySelector('#create-new-activity');
+var studyButton = document.querySelector('#studyButton');
+var leftButtons = document.querySelector('#leftButtons');
+var errorMessage = document.querySelector('#errorMessage');
+var startTimerButton = document.querySelector('#startTimer');
+var logActivityButton = document.querySelector('#logActivity');
+var meditateButton = document.querySelector('#meditateButton');
+var exerciseButton = document.querySelector('#exerciseButton');
+var startActivityButton = document.querySelector('#startButton');
+var createNewActivityButton = document.querySelector('#createNewActivity');
 
 // Variables targeting HTML input elements
-var minutesInput = document.querySelector('#minutes-input');
-var secondsInput = document.querySelector('#seconds-input');
-var accomplishInput = document.querySelector('#accomplish-input');
+var minutesInput = document.querySelector('#minutesInput');
+var secondsInput = document.querySelector('#secondsInput');
+var accomplishInput = document.querySelector('#accomplishInput');
 
 // Variables targeting view elements
-var activityStatus = document.querySelector('#new-activity');
-var timerView = document.querySelector('#timer-sub-container');
-var timerCountdown = document.querySelector('#timer-countdown');
-var haventLoggedMessage = document.querySelector('#havent-logged');
-var completeFormMessage = document.querySelector('#complete-form');
-var leftSubContainer = document.querySelector('#left-sub-container');
-var activityDescription = document.querySelector('#activity-description');
-var cardsHolder = document.querySelector('#past-activities-cards-holder');
+var activityStatus = document.querySelector('#newActivity');
+var timerView = document.querySelector('#timerSubContainer');
+var timerCountdown = document.querySelector('#timerCountdown');
+var haventLoggedMessage = document.querySelector('#haventLogged');
+var completeFormMessage = document.querySelector('#completeForm');
+var leftSubContainer = document.querySelector('#leftSubContainer');
+var activityDescription = document.querySelector('#activityDescription');
+var cardsHolder = document.querySelector('#pastActivitiesCardsHolder');
 
 // Variables to persist information in the Data Model
 var interval;
@@ -118,8 +118,8 @@ function buttonsError() {
       
       show(errorMessage);
       leftButtons.classList.add('left-buttons-border');
-    }
   }
+}
 
 function error(input) {
   if (input.value === '') {
@@ -141,7 +141,7 @@ function preventE(element) {
     if (invalidChars.includes(e.key)) {
       e.preventDefault();
     }
-  });
+  })
 }
 
 function assignCategory() {

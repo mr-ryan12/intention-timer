@@ -10,13 +10,13 @@ class Activity {
 
   countdown() {
     interval = setInterval(decrement, 1000);
-  };
+  }
 
   markComplete() {
     if (totalSeconds === 0) {
       this.completed = true;
     }
-  };
+  }
   
   saveToStorage() {
     if (localStorage.getItem('activitiesArray')) {
@@ -34,5 +34,5 @@ class Activity {
       activitiesArray = JSON.stringify(loggedActivities);
       localStorage.setItem('activitiesArray', activitiesArray);
     }
-  };
+  }
 }
