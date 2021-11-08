@@ -169,46 +169,42 @@ main {
 }
 
 .accomplish-input {
-  position: relative;
   bottom: 76px;
   right: -35px;
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid #FFF;
-  color: #FFF;
   width: 620px;
 }
-
-.minutes-time {
-  position: relative;
-  bottom: 52px;
-  right: -35px;
-}
-
-.seconds-time{
-  position: relative;
-  bottom: 52px;
-  right: -90px;
-}
-
 .seconds-input {
-  position: relative;
   right: -18px;
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid #FFF;
-  color: #FFF;
   width: 243px;
 }
 
 .minutes-input {
-  position: relative;
   right: 34px;
+  width: 243px;
+}
+
+.accomplish-input, 
+.seconds-input,
+.minutes-input {
+  position: relative;
   background: transparent;
   border: none;
   border-bottom: 1px solid #FFF;
   color: #FFF;
-  width: 243px;
+}
+
+.minutes-time {
+  right: -35px;
+}
+
+.seconds-time{
+  right: -90px;
+}
+
+.minutes-time, 
+.seconds-time {
+  position: relative;
+  bottom: 52px;
 }
 
 .start-button {
@@ -222,6 +218,11 @@ main {
 
 .error-bottom-border {
   border-bottom-color: #EFB7EC;
+}
+
+.left-buttons-border {
+  padding: 5px;
+  border: 2px solid #EFB7EC;
 }
 
 .timer-countdown {
@@ -246,6 +247,16 @@ main {
 
 .log-activity {
   width: 180px;
+}
+
+.create-new-activity {
+  position: absolute;
+  top: 287px;
+  width: 250px;
+}
+
+.log-activity,
+.create-new-activity {
   height: 25px;
   font-size: 12px;
   background-color: #FFF;
@@ -282,25 +293,8 @@ hr {
   margin-left:15px
 }
 
-.create-new-activity {
-  position: absolute;
-  top: 287px;
-  width: 250px;
-  height: 25px;
-  font-size: 12px;
-  background-color: #FFF;
-  border: 0;
-  border-radius: 2px;
-
-}
-
 aside {
   overflow-y: auto;
-}
-
-.left-buttons-border {
-  padding: 5px;
-  border: 2px solid #EFB7EC;
 }
 
 button {
@@ -311,12 +305,3 @@ button {
   display: none;
 }
 
-/* Main background: #2B2733
-Text on main background: #CBC9CF
-Header, cards: #46424D
-Card shadow: #26222D
-Text on header and cards: #FFF
-Study: #B3FD78
-Meditate: #C278FD
-Exercise: #FD8078
-Error: #EFB7EC
