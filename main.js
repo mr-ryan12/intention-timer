@@ -244,24 +244,6 @@ function show(element) {
   element.classList.remove('hidden');
 }
 
-// function storeCurrentActivity() {
-//   if (localStorage.getItem('activitiesArray')) {
-//     loggedActivities = JSON.parse(localStorage.getItem('activitiesArray'));
-//     loggedActivities.unshift(currentActivity);
-//     displayLoggedActivities();
-//     hideTimer();
-//     activitiesArray = JSON.stringify(loggedActivities);
-//     localStorage.removeItem('activitiesArray');
-//     localStorage.setItem('activitiesArray', activitiesArray);
-//   } else {
-//     loggedActivities.unshift(currentActivity);
-//     displayLoggedActivities();
-//     hideTimer();
-//     activitiesArray = JSON.stringify(loggedActivities);
-//     localStorage.setItem('activitiesArray', activitiesArray);
-//   }
-// }
-
 function displayOnLoad() {
   if (localStorage.getItem('activitiesArray')) {
     hide(haventLoggedMessage);
