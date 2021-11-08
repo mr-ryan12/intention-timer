@@ -14,9 +14,7 @@ header {
 }
 
 body {
-  border: 0;
   margin: 0;
-  padding: 0;
 }
 
 main {
@@ -31,7 +29,8 @@ main {
   padding: 30px;
 }
 
-.left-sub-container {
+.left-sub-container, 
+.timer-sub-container {
   background-color: #46424D;
   color: #FFF;
   height: 75vh;
@@ -43,57 +42,31 @@ main {
   filter: drop-shadow(3px 3px #26222D);
 }
 
-.timer-sub-container{
-  background-color: #46424D;
-  color: #FFF;
-  height: 75vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  padding: 2px 65px;
+.timer-sub-container {
   align-items: center;
-  border-radius: 10px;
-  filter: drop-shadow(3px 3px #26222D);
 }
 
-.start-timer {
+.start-timer-study,
+.start-timer-meditate,
+.start-timer-exercise {
   height: 200px;
   width: 200px;
   border-radius: 50%;
-  border: 3px solid red;
   background-color: inherit;
   color: #FFF;
   font-size: 20px;
 }
 
 .start-timer-study {
-  height: 200px;
-  width: 200px;
-  border-radius: 50%;
   border: 3px solid #B3FD78;
-  background-color: inherit;
-  color: #FFF;
-  font-size: 20px;
 }
 
 .start-timer-meditate {
-  height: 200px;
-  width: 200px;
-  border-radius: 50%;
   border: 3px solid #C278FD;
-  background-color: inherit;
-  color: #FFF;
-  font-size: 20px;
 }
 
 .start-timer-exercise {
-  height: 200px;
-  width: 200px;
-  border-radius: 50%;
   border: 3px solid #FD8078;
-  background-color: inherit;
-  color: #FFF;
-  font-size: 20px;
 }
 
 .select-a-category {
@@ -122,91 +95,54 @@ main {
   right: 6px;
 }
 
+.study-button,
+.meditate-button,
+.exercise-button {
+  color: #FFF;
+  border: 1px solid #FFF;
+}
+
 .study-button {
   background: url("assets/study.svg");
-  color: #FFF;
-  background-repeat: no-repeat;
-  background-size: 25px 25px;
-  background-position: 58px 10px;
-  height: 67px;
-  width: 142px;
-  border: 1px solid #FFF;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-top: 27px;
-  border-radius: 5px 5px;
+}
+
+.meditate-button {
+  background: url("assets/meditate.svg");
+}
+
+.exercise-button {
+  background: url("assets/exercise.svg");
 }
 
 .study-button-active {
   background: url("assets/study-active.svg");
   color: #B3FD78;
-  background-repeat: no-repeat;
-  background-size: 25px 25px;
-  background-position: 58px 10px;
-  height: 67px;
-  width: 142px;
   border: 1px solid #B3FD78;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-top: 27px;
-  border-radius: 5px 5px;
-}
-
-
-.meditate-button {
-  background: url("assets/meditate.svg");
-  color: #FFF;
-  background-repeat: no-repeat;
-  background-size: 25px 25px;
-  background-position: 58px 10px;
-  height: 67px;
-  width: 142px;
-  border: 1px solid #FFF;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-top: 27px;
-  border-radius: 5px 5px;
 }
 
 .meditate-button-active {
   background: url("assets/meditate-active.svg");
   color: #C278FD;
-  background-repeat: no-repeat;
-  background-size: 25px 25px;
-  background-position: 58px 10px;
-  height: 67px;
-  width: 142px;
   border: 1px solid #C278FD;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-top: 27px;
-  border-radius: 5px 5px;
-}
-
-.exercise-button {
-  background: url("assets/exercise.svg");
-  color: #FFF;
-  background-repeat: no-repeat;
-  background-size: 25px 25px;
-  background-position: 58px 10px;
-  height: 67px;
-  width: 142px;
-  border: 1px solid #FFF;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-top: 27px;
-  border-radius: 5px 5px;
 }
 
 .exercise-button-active {
   background: url("assets/exercise-active.svg");
   color: #FD8078;
+  border: 1px solid #FD8078;
+}
+
+.study-button,
+.study-button-active,
+.meditate-button,
+.meditate-button-active,
+.exercise-button,
+.exercise-button-active {
   background-repeat: no-repeat;
   background-size: 25px 25px;
   background-position: 58px 10px;
   height: 67px;
   width: 142px;
-  border: 1px solid #FD8078;
   padding-left: 10px;
   padding-right: 10px;
   padding-top: 27px;
