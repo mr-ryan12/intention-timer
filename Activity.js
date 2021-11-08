@@ -7,21 +7,32 @@ class Activity {
     this.completed = false;
     this.id = Date.now();
   }
+
   countdown() {
     interval = setInterval(decrement, 1000);
   };
 
   markComplete() {
-    logActivity()
-    //Change timer to complete
-    //show log activity button
-
-
+    if (totalSeconds === 0) {
+      this.completed = true;
+    }
   };
+  
   saveToStorage() {
-    //save to STORAGE
-    //completed activity title
-    //create new activity button appear
-    //
+    if (localStorage.getItem('activitiesArray')) {
+      loggedActivities = JSON.parse(localStorage.getItem('activitiesArray'));
+      loggedActivities.unshift(currentActivity);
+      displayLoggedActivities();
+      hideTimer();
+      activitiesArray = JSON.stringify(loggedActivities);
+      localStorage.removeItem('activitiesArray');
+      localStorage.setItem('activitiesArray', activitiesArray);
+    } else {
+      loggedActivities.unshift(currentActivity);
+      displayLoggedActivities();
+      hideTimer();
+      activitiesArray = JSON.stringify(loggedActivities);
+      localStorage.setItem('activitiesArray', activitiesArray);
+    }
   };
 }
