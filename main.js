@@ -115,7 +115,7 @@ function buttonsError() {
   if (!(meditateButton.classList.contains('meditate-button-active')) &&
       !(studyButton.classList.contains('study-button-active')) &&
       !(exerciseButton.classList.contains('exercise-button-active'))) {
-      
+
       show(errorMessage);
       leftButtons.classList.add('left-buttons-border');
   }
@@ -268,10 +268,10 @@ function displayLoggedActivities() {
 
     cardsHolder.innerHTML += `
     <section class="past-activities-card" id="${loggedActivities[i].id}">
-      <section class="card-words-holder" id="card-words-holder">
-        <p class="past-activity-title" id="past-activity-title">${loggedActivities[i].category}</p>
-        <h2 class="past-activity-time" id="past-activity-time">${loggedActivities[i].minutes} MIN ${loggedActivities[i].seconds} SECONDS</h2>
-        <h3 class="past-activity-desciption" id="past-activity-description">${loggedActivities[i].description}</h3>
+      <section class="card-words-holder">
+        <p class="past-activity-title">${loggedActivities[i].category}</p>
+        <h2>${loggedActivities[i].minutes} MIN ${loggedActivities[i].seconds} SECONDS</h2>
+        <h3>${loggedActivities[i].description}</h3>
       </section>
       <hr style="color:${color}"></hr>
     </section>`

@@ -29,7 +29,7 @@ main {
   padding: 30px;
 }
 
-.left-sub-container, 
+.left-sub-container,
 .timer-sub-container {
   background-color: #46424D;
   color: #FFF;
@@ -173,19 +173,20 @@ main {
   right: -35px;
   width: 620px;
 }
+.seconds-input,
+.minutes-input {
+  width: 243px;
+}
+
 .seconds-input {
   right: -18px;
-  width: 243px;
 }
 
 .minutes-input {
   right: 34px;
-  width: 243px;
 }
 
-.accomplish-input, 
-.seconds-input,
-.minutes-input {
+input {
   position: relative;
   background: transparent;
   border: none;
@@ -201,7 +202,7 @@ main {
   right: -90px;
 }
 
-.minutes-time, 
+.minutes-time,
 .seconds-time {
   position: relative;
   bottom: 52px;
@@ -304,4 +305,3 @@ button {
 .hidden {
   display: none;
 }
-
