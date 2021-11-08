@@ -191,7 +191,8 @@ input {
   background: transparent;
   border: none;
   border-bottom: 1px solid #FFF;
-  color: #FFF;
+  color: #CBC9CF;
+  font-size:16px;
 }
 
 .minutes-time {
