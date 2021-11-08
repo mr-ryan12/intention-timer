@@ -1,56 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
-  <title>Intention Timer</title>
-</head>
-<body>
-  <header class="header">INTENTION TIMER</header>
-  <main>
-    <section class="container left-container">
-      <h1 class="new-activity" id="new-activity">New Activity</h1>
-      <section class="view timer-sub-container hidden" id="timer-sub-container">
-        <section class="timer-text-container">
-          <h1 class="activity-description" id="activity-description">empty string</h1>
-          <h1 class="timer-countdown" id="timer-countdown">00:00</h1>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <title>Intention Timer</title>
+  </head>
+  <body>
+    <header class="header">INTENTION TIMER</header>
+    <main>
+      <section class="container left-container">
+        <h1 class="new-activity" id="newActivity">New Activity</h1>
+        <section class="view timer-sub-container hidden" id="timerSubContainer">
+          <section class="timer-text-container">
+            <h1 class="activity-description" id="activityDescription">empty string</h1>
+            <h1 class="timer-countdown" id="timerCountdown">00:00</h1>
+          </section>
+          <button class="start-timer" id="startTimer">START</button>
+          <button class="log-activity hidden" id="logActivity">LOG ACTIVITY</button>
+          <button class="create-new-activity hidden" id="createNewActivity">CREATE A NEW ACTIVITY</button>
         </section>
-        <button class="start-timer" id="start-timer">START</button>
-        <button class="log-activity hidden" id="log-activity">LOG ACTIVITY</button>
-        <button class="create-new-activity hidden" id="create-new-activity">CREATE A NEW ACTIVITY</button>
-      </section>
-      <section class="view left-sub-container" id="left-sub-container">
-        <h3 class="select-a-category">Select a category:</h3>
-        <section class="left-buttons" id="left-buttons">
-          <button class="study-button" id="study-button">Study</button>
-          <button class="meditate-button" id="meditate-button">Meditate</button>
-          <button class="exercise-button" id="exercise-button">Exercise</button>
+        <section class="view left-sub-container" id="leftSubContainer">
+          <h3 class="select-a-category">Select a category:</h3>
+          <section class="left-buttons" id="leftButtons">
+            <button class="study-button" id="studyButton">Study</button>
+            <button class="meditate-button" id="meditateButton">Meditate</button>
+            <button class="exercise-button" id="exerciseButton">Exercise</button>
+          </section>
+          <form class="left-inputs">
+            <label class="accomplish" for="accomplish-input">What would you like to accomplish during this time?</label>
+            <input class="accomplish-input" type="text" id="accomplishInput" />
+            <h3 class="error-message hidden" id="errorMessage"><img class="warning-label" src="./assets/warning.svg"/> A description is required.</h3>
+            <br />
+            <label class="minutes-time" for="minutes-input">Minutes</label>
+            <input class="minutes-input" type="number" min="0" id="minutesInput" />
+            <label class="seconds-time" for="seconds-input">Seconds</label>
+            <input class="seconds-input" type="number" min="0" id="secondsInput" />
+            <br />
+            <button class="start-button" id="startButton">START ACTIVITY</button>
+          </form>
         </section>
-        <form class="left-inputs">
-          <label class="accomplish" for="accomplish-input">What would you like to accomplish during this time?</label>
-          <input class="accomplish-input" type="text" id="accomplish-input" />
-          <h3 class="error-message hidden" id="error-message"><img class="warning-label" src="./assets/warning.svg"/> A description is required.</h3>
-          <br />
-          <label class="minutes-time" for="minutes-input">Minutes</label>
-          <input class="minutes-input" type="number" min="0" id="minutes-input" />
-          <label class="seconds-time" for="seconds-input">Seconds</label>
-          <input class="seconds-input" type="number" min="0" id="seconds-input" />
-          <br />
-          <button class="start-button" id="start-button">START ACTIVITY</button>
-        </form>
       </section>
-    </section>
-    <aside class="container right-container">
-      <h1 class="past-activites">Past Activities</h1>
-      <section class="past-activities-cards-holder" id="past-activities-cards-holder"></section>
-      <p class="havent-logged" id="havent-logged">You haven't logged any activities yet.</p>
-      <p class="complete-form" id="complete-form">Complete the form to the left to get started!</p>
-    </aside>
-  </main>
-  <script type="text/javascript" src="Activity.js"></script>
-  <script type="text/javascript" src="main.js"></script>
-</body>
+      <aside class="container right-container">
+        <h1 class="past-activites">Past Activities</h1>
+        <section class="past-activities-cards-holder" id="pastActivitiesCardsHolder"></section>
+        <p class="havent-logged" id="haventLogged">You haven't logged any activities yet.</p>
+        <p class="complete-form" id="completeForm">Complete the form to the left to get started!</p>
+      </aside>
+    </main>
+    <script type="text/javascript" src="Activity.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+  </body>
 </html>
