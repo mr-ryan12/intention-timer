@@ -52,6 +52,7 @@ function storeCurrentActivity() {
 
 function startTimer() {
   currentActivity.countdown();
+  startTimerButton.disabled = true;
 }
 
 function toggleStudyButtonColor() {
@@ -192,7 +193,7 @@ function decrement() {
     displayMinutes = Math.floor(totalSeconds / 60);
     displaySeconds = totalSeconds % 60;
     ensureDoubleZeros();
-    displayAtZeroSeconds()
+    displayAtZeroSeconds();
   }
 }
 

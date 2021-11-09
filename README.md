@@ -38,9 +38,10 @@ Feel free to see it in action by clicking [here](https://mr-ryan12.github.io/int
 Checkout the Turing spec sheet [here](https://frontend.turing.edu/projects/module-1/intention-timer-group.html)
   
 ## Future Additions
-Add functionality for selecting favorite activities.  
-Animate the colored border around the timer to indicate how much time is left.
-
+- Add functionality for selecting favorite activities.  
+- Animate the colored border around the timer to indicate how much time is left.  
+- Fully separate the Activity.js class from directly manipulating DOM elements.  
+- Apply timer logic to methods in Activity.js class. 
 
 ## Contributors  
 [Lynn Nguyen](https://github.com/Alynn022)  
